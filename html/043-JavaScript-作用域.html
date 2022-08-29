@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function fn() {
+        //     num = 100   // 这个不是声明，只是赋值，向上找最后直接定义全局变量num
+        //     // var num = 100 // 这个是声明，外面那个打印就打印不出来，直接报错
+        //     console.log(num)
+        // }
+        // fn()
+        // console.log(num)
+
+        // 作用域和预解析 面试题 * 2
+        // var a = b = 20
+        // a = 10
+        // b = 10
+        // console.log(a)
+        // console.log(b)
+        // 预解析 var a
+        // 正式执行
+        // b = 20 全局
+        // a = 20
+        // ...
+
+        // var a = b
+        // a = 10
+        // b = 10
+        // console.log(a)
+        // console.log(b)
+        // // 正式执行
+        // // a = b b is not defined
+
+
+        // 再来
+        // fn()
+        // // fn() 再来fn()，fn已经成了200，你把它当函数
+        // var fn = 100
+        // function fn() {
+        //     fn = 200
+        // }
+        // console.log(fn)
+
+
+        // function fn() {
+        //     var num = 100
+        //     function fun() {
+        //         var num = num
+        //         // 预解析了num变量 使用时赋值num给num 这时num是undefined 
+        //         // 因为fun()自己有num 就不去看你fn()里那个num
+        //         // undefined就赋值给num了 后面输出直接 
+        //         console.log(num)
+        //     }
+        //     fun()
+        //     // fn()
+        // }
+        // fn()
+        // // fun()
+
+
+        // var a = 10
+        // function fn(b) {
+        //     function b() { console.log('b 函数') }
+        //     b()
+        // }
+        // fn(200)
+
+
+        
+
+
+
+    </script>
+
+
+    <!--
+        作用域案例
+            + 计数器 加减
+            + 因为是计数器，俩按钮得操作同一个变量
+            + 为了让一个变量跨函数使用 
+                => 可以把在多个函数内使用的变量
+                => 定义在最外面
+                => 在函数内部只是进行操作
+    -->
+    <!-- <button id="and">+</button>
+    &nbsp;
+    <button id="sub">-</button>
+    
+    <script>
+        var num = 0
+        and.onclick = function() {
+            // console.log('我执行了 + 操作')
+            num++
+            console.log(num)
+        }
+        sub.onclick = function() {
+            // console.log('我执行了 - 操作')
+            num--
+            console.log(num)
+        }
+    </script> -->
+
+
+</body>
+</html>

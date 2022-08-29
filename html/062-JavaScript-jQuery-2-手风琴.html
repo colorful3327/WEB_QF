@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手风琴 有点问题还</title>
+
+    <style>
+        *{margin: 0;padding: 0;}
+        ul, li {
+            list-style: none;
+        }
+        ul {
+            width: 640px;
+            height: 280px;
+            border: 10px solid violet;
+            margin: 50px auto;
+        }
+        li {
+            width: 160px;
+            height: 100%;
+            overflow: hidden;
+            float: left;
+        }
+        li > img {
+            width: 520px;
+            height: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><img src="./images/grid-1.png" alt=""></li>
+        <li><img src="./images/grid-2.png" alt=""></li>
+        <li><img src="./images/grid-5.png" alt=""></li>
+        <li><img src="./images/feiman.png" alt=""></li>
+    </ul>
+
+    <script src="./jquery-3.5.1.min.js"></script>
+    <script>
+        let current = null
+        $('li').mouseover(function () {
+            $(this).siblings().stop().animate({ width: 40 })
+            $(this).stop().animate({ width: 520 })
+            current = $(this)
+        })
+        $('ul').mouseleave(function () {
+            current
+                .stop()
+                .animate({ width: 160 })
+                .siblings
+                .stop
+                .animate({ width: 160 })
+        })
+    </script>
+</body>
+</html>

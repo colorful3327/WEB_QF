@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        div {
+            width: 2000px;
+            height: 3600px;
+        }
+        button {
+            position: fixed;
+            bottom: 49px;
+            right: 129px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button id="btn">测试自动滚回</button>
+    </div>
+    <script>
+        var timer = 0
+        btn.onclick = function () {
+            timer = setInterval(function () {
+                document.documentElement.scrollTop -= 30
+                if (document.documentElement.scrollTop <= 0) {
+                    clearInterval(timer)
+                }
+            }, 50)
+        }
+        var st = 0
+        window.onscroll = function () {
+            // console.log('d.dE.sTop', document.documentElement.scrollTop)
+            // console.log('st', st)
+            if (document.documentElement.scrollTop >= st) {
+                clearInterval(timer)
+            }
+            st = document.documentElement.scrollTop
+        }
+    </script>
+    <!-- <script>
+        var str = '?a=49&b=129'
+        function parseQueryString(str) {
+            var obj = {}
+            if (str) {
+                var tmp = str.slice(1).split('&')
+                tmp.forEach(function (item) {
+                    var t = item.split('=')
+                    obj[t[0]] = t[1]
+                })
+            }
+            return obj
+        }
+        console.log(parseQueryString(str))
+    </script> -->
+</body>
+</html>

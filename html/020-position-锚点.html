@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        ul{
+            position: fixed;
+            right: 0;
+            top: 200px;
+        }
+        li{
+            list-style: none;
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            border: 1px solid black;
+            text-align: center;
+        }
+        div{
+            border-top: 2px solid red;
+            height: 810px;
+            font-weight: bold;
+            font-size: 36px;
+        }
+        div:target{
+            background-color: violet;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="#a">千秋万古</a></li>
+        <li><a href="#b">为留待骚人</a></li>
+        <li><a href="#c">狂歌痛饮</a></li>
+        <li><a href="#d">来访雁丘处</a></li>
+    </ul>
+    <div id="a">千秋万古</div>
+    <div id="b">为留待骚人</div>
+    <div id="c">狂歌痛饮</div>
+    <div id="d">来访雁丘处</div>
+</body>
+</html>

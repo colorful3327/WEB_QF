@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        div {
+            width: 200px;
+            height: 100px;
+            border: 2px solid violet;
+            margin: 100px;
+        }
+        p {
+            width: 200px;
+            height: 100px;
+            border: 2px solid #333;
+            background-color: #fff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+        p.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div>我是一个标题</div>
+    <p>
+        我是提示我是提示我是提示我是提示我是提示我是提示我是提示
+    </p>
+    <script src="./utils.js"></script>
+    <script>
+        var div = document.querySelector('div')
+        var p =document.querySelector('p')
+        div.addEventListener('mouseover', function () {
+            p.classList.add('active')
+        })
+        div.addEventListener('mouseout', function () {
+            p.classList.remove('active')
+        })
+        div.addEventListener('mousemove', function (e) {
+            e = e || window.event
+            var x = e.clientX + 4
+            var y = e.clientY + 3
+            p.style.left = x + 'px'
+            p.style.top = y + 'px'
+        })
+    </script>
+</body>
+</html>

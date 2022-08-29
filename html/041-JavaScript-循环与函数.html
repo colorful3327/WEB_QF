@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style></style>
+</head>
+
+
+    <script>
+        /* 
+        => 来个循环求和
+        - 思路
+            + 通过循环拿到1 - 10
+            + 把每个数字加起来
+        */
+        // 1. 准备一个变量，接收叠加的结果
+        // let sum = 0
+
+        // // 2. 准备一个循环的初始化变量
+        // let n = 1
+
+        // // 3. 循环
+        // while (n <= 10) {
+        //     // 4. 叠加
+        //     sum += n
+
+        //     // 5. 改变初始值
+        //     n ++
+        // }
+
+        // // 循环结束的sum即为1 - 10之和
+        // console.log(sum)
+
+        // let n2 = 6
+        // let and = 1
+        // while(n2 > 0){
+        //     and *= n2
+        //     n2--
+        // }
+        // console.log(and)
+
+
+        // // do while案例
+        // do {
+        //     var text = prompt('喜欢的话就坚持吧!')
+        // } while(text !== 'yes')
+
+        // 改写while
+        // var text = prompt('呐啦')
+        // while (text !== '呐啦啦'){
+        //     text = prompt('呐啦')
+        // }
+
+
+
+        // 水仙花数
+        // for (var i = 100; i <= 999; i++) {
+        //     var a = parseInt(i / 100)
+        //     var b = parseInt(i % 100 / 10)
+        //     var c = i % 10
+
+        //     if (a ** 3 + b ** 3 + c ** 3 === i) {
+        //         console.log(i + '是三次幂数')
+        //     }
+        // }
+        // console.log(12090409 ** (1/9))
+        // console.log(6.122628208555197 ** 9)
+
+        // 打印三角形
+        // 1.
+        // *
+        // * *
+        // * * *
+        // for(var i=1; i<10; i++){
+        //     for(var j=1; j<=i; j++){
+        //         document.write('* ')
+        //     }
+        //     document.write('<br>')
+        // }
+
+        // 2.1
+        // * * *
+        // * *
+        // *
+        // for(var i = 9; i >= 1; i--){
+        //     for(var j = 1; j <= i; j++){
+        //         document.write('* ')
+        //     }
+        //     document.write('<br>')
+        // }
+
+        // 2.2
+        // for(var i=1; i<=9; i++){
+        //     for(var j=i; j<=9; j++){
+        //         document.write(' * ')
+        //     }
+        //     document.write('<br>')
+        // }
+
+        // 3
+        // * * *
+        //   * *
+        //     *
+        // for(var i=1; i<=9; i++){
+        //     for(var j=1; j<i; j++){
+        //         document.write('&nbsp;')
+        //     }
+        //     for(var k=i; k<=9; k++){
+        //         document.write('*')
+        //     } 
+        //     document.write('<br>')
+        // } 
+
+        // 4.
+        //     *
+        //   * *
+        // * * *
+        // for(var i=1; i<=9; i++){
+        //     for(var j=i; j<9; j++){
+        //         document.write('&nbsp')
+        //     }
+        //     for(var k=1; k<=i; k++){
+        //         document.write('*')
+        //     }
+        //     document.write('<br>')
+        // }
+
+        // 5. 等腰三角形
+        //    *
+        //   * *
+        //  * * *
+        // for(var i=1; i<=9; i++){
+        //     for(var j=i; j<9; j++){
+        //         document.write('&nbsp')
+        //     }
+        //     for(var k=1; k<=i; k++){
+        //         document.write('*&nbsp')
+        //     }
+        //     document.write('<br>')
+        // }
+
+        //5.2
+        //     * 
+        //   * * *
+        // * * * * * 
+        // for(var i=1; i<=9; i++){
+        //     if(i % 2){
+        //         for(var j=i; j<9; j++){
+        //         document.write('&nbsp')
+        //     }
+        //     for(var k=1; k<=i; k++){
+        //         document.write('*&nbsp')
+        //     }
+        //     document.write('<br>')
+        //     }
+        // }
+
+        // 5.3 辗转相除法求最大公约数
+        // var a = 129
+        // var b = 49
+        // var m = a
+        // var n = b
+        // if (m < n) {
+        //     var tmp = m
+        //     m = n
+        //     n = tmp
+        // }
+        // while (m % n !== 0) {
+        //     tmp = m % n
+        //     m = n
+        //     n = tmp
+        // }
+        // console.log(a + '和' + b + '的最大公约数是' + n)
+
+        // 最小公倍数
+        // var m = 12
+        // var n = 4
+        // if (m < n) {
+        //     tmp = m
+        //     m = n
+        //     n = tmp
+        // }
+        // var gbs = m
+        // while (gbs % m !== 0 || gbs % n !== 0) {
+        //     gbs += m
+        // }
+        // console.log(m + '和' + n + '的最小公倍数是' + gbs)
+
+        // 判断是否是质数
+        // var flag = '是质数', num = 49
+        // for (var i = 2; i <= parseInt(num / 2); i++) {
+        //     if (num % i === 0) {
+        //         flag = '不是质数'
+        //         break // 记得break一下 
+        //     }
+        // }
+        // console.log(num + flag)
+
+        // 打印闰年
+        // 1000 - 2000, 四个一换行
+        // var count = 0
+        // for (i = 1000; i <= 2000; i++) {
+        //     if (i % 4 === 0 && i % 100 !== 0 || i % 400 === 0) {
+        //         document.write(i + ' ') //
+        //         count++                 // 注意这几步的先后顺序
+        //         if (count % 4 === 0) {  //
+        //             document.write('<br>')
+        //         }
+        //     }
+        // }
+
+        // 函数调用错误提示
+        // fun()
+        // var fun = function(){
+        //     console.log('test')
+        // }
+
+        // arguments求和
+        // function fn() {
+        //     var sum = 0
+        //     for (var i = 0; i < arguments.length; i++) {
+        //         sum += arguments[i]
+        //     }
+        //     console.log('这几个数的和为:' + sum)
+        // }
+        // fn(10, 20, 30, 40)
+
+        // return打断
+        // function fn() {
+        //     console.log(1)
+        //     console.log(2)
+        //     console.log(3)
+        //     return 123
+        //     console.log(4) // 从此往后
+        //     console.log(5) // 不再执行
+        //     return 45      //
+        // }
+        // console.log(fn()) 
+
+        // 封装，先写个最大公约数，再用最大公约数求最小公倍数
+        // function gys(a, b) {
+        //     if (a < b) {
+        //         var tmp = a
+        //         a = b
+        //         b = tmp
+        //     }
+        //     while (a % b !== 0) {
+        //         tmp = a % b
+        //         a = b
+        //         b = tmp
+        //     }
+        //     return b
+        // }
+        // function gbs(a, b) {
+        //     return a * b / gys(a, b) // 封装过的函数gys()就可以直接拿来用
+        // }
+        // console.log(gbs(4, 12))
+
+        // 由此，建立工具库
+
+        // 五的递归
+        // console.log('start')
+        // function fn(n) {
+        //     // 先写终点
+        //     if (n === 1) {
+        //         return 1
+        //     }
+        //     // 递进去
+        //     return n * fn(n - 1)
+        // }
+        // var res = fn(5)
+        // console.log('end')
+
+
+        
+        //  循环与函数的作业 -->
+        //  1. 利用循环打印九九乘法表 -->
+        // for (i = 1; i <=9; i++) {
+        //     for (j = 1; j <=i; j++) {
+        //         document.write(j + '×' + i + '=' + j * i + ' ') // 拼接字符串先写好具体再替换变量
+        //     }
+        //     document.write('<br>')
+        // }
+
+
+        // 2. 来个函数 棋盘64个格子，放芝麻粒1，2,4,8...
+        //             一个芝麻0.0001克，说的是，放满64个格子，一共多沉
+        // 这个不大行失败了，没想明白，重来，看后面
+        // function zhimali(n) {
+        //     // 终点
+        //     if (n === 1) {
+        //         return 1
+        //     }
+        //     // 第n个格子的芝麻粒数目
+        //     return 2 * zhimali(n - 1)   
+        // }
+        // // console.log(zhimali(4)) // 第四个格子的芝麻粒数量 8
+        // function zhima(m) {
+        //     sum = 0
+        //     for(i = 1; i <= m; i++) {
+        //         sum = sum + zhimali(m) 
+        //     }
+        //     return sum
+        // }
+        // console.log(zhima(4)) // 前四个格子一共15个芝麻粒
+        // 我是后面，看我后面
+        // 思路 1. 循环出现1-64 
+        // 1 2 4 8 这里考虑不全，光想着前面二倍要递归了，实际上，咱这不就是2的多少次幂嘛
+        // 自己重新写了一个
+        // function zhimali(n) {
+        //     for(var i = 1; i <= n; i++) {
+        //         num = 2 ** (i - 1)
+        //     }                                        // 你再看看你写的这是啥玩意儿
+        //     return num                               // 其实还怪好，怪好笑的
+        // }
+        // // console.log(zhimali(4))
+        // function zhima(n) {
+        //     sum = zhimali(1)
+        //     for(var i = 1; i <= n; i++) {
+        //         sum = sum + zhimali(n)    // 这里应该直接一个括号里，那个zhimali根本不用函数
+        //     }                             // 把这个和下面那个最终版对比对比
+        //     return sum
+        // }
+        // console.log(zhima(4))
+        // 然而后面求和还是不懂 
+        // 再来
+        function zhimali(n) {
+            var sum = 0
+            for(var i = 0; i < n; i++) {
+                sum = sum + 2 ** i
+                // 循环，循环一个结果就把它加到sum里
+                // var num = 2 ** i
+            }
+            var g = sum * 0.0001
+            return n + '个格子的芝麻粒总质量为' + g + 'g'
+            // return sum
+            // return num
+        }
+        // console.log(zhimali(4))
+        console.log(zhimali(5))
+        // 我超，这就完事儿了，反思一下，哪里想的太简单哪里想的太复杂 
+
+
+
+
+    </script>
+
+
+    <!-- 作业 四则运算计算器 -->
+    <!-- <form action="">
+        <input type="text" id="first">
+        <select name="" id="type">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="×">×</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" id="second">
+        <button id="btn" type="button">=</button>
+        <input id="result" type="text" disabled>
+    </form> -->
+    <!-- 
+        button 标签对在 form 标签里的时候是 submit
+        等价于 input type="submit"
+     -->
+    <!-- <script>
+        btn.onclick = function() {
+            var a = first.value - 0
+            var b = parseFloat(second.value)
+            var tp = type.value
+            // if or switch?
+            // 代码少 没有判断 都推荐switch
+            var res
+            switch(tp){
+                case '+': res = a + b; break
+                case '-': res = a - b; break
+                case '×': res = a * b; break
+                case '/': res = a / b; break
+            }
+            result.value = res
+        }
+    </script> -->
+
+
+    <!-- <div id="box">盒盒盒</div> -->
+
+
+    <!-- 两个输入框，点击等于号按钮得到结果 -->
+    <!-- <input id="first" type="text">
+    +
+    <input type="text" id="second">
+    <button id="btn">=</button>
+    <input id="result" type="text" disabled>
+    <script>
+        btn.onclick = function () {
+            // console.log('我在获取输入值')
+            var a = first.value - 0
+            // console.log(a)
+            var b = second.value - 0
+            result.value = a + b
+        }
+    </script> -->
+
+
+
+
+    <script src="./utils.js"></script>
+    <script>
+        // console.log(getGys(4, 9))
+        // console.log(getGbs(12, 9))
+        // console.log(zs(129))
+
+        // for (var i = 10; i <= 30; i++) {
+        //     if (zs(i) === (i + '是质数')) console.log(zs(i))
+        // }
+
+        // console.log('5的阶乘是: ' + jc(5))
+        // console.log('斐波那契数列第7个数字是: ' + fbnq(7))
+        // console.log(box) // 得: 盒盒盒
+
+    </script>
+</body>
+
+</html>

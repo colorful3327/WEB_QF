@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // console.log(typeof 'abc')
+        // console.log(typeof true)
+        // console.log(typeof [])
+        // console.log(typeof function() {})
+
+        // console.log([].constructor)
+        // console.log({}.constructor)
+        // console.log('abc'.constructor)
+
+        console.log(Object.prototype.toString.call(123))
+        console.log(Object.prototype.toString.call('1as'))
+        console.log(Object.prototype.toString.call(true))
+        console.log(Object.prototype.toString.call([12, 9]))
+        console.log(Object.prototype.toString.call(undefined))
+        console.log(Object.prototype.toString.call(new Date()))
+        console.log(Object.prototype.toString.call(function() {}))
+
+    </script>
+</body>
+</html>

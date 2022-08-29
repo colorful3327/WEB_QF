@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分页器</title>
+    <style>
+        *{margin: 0;padding: 0;}
+
+        .pagination {
+            border: 1px solid #333;
+            left: 200px;
+            top: 100px;
+        }
+        /* .pagination {
+            width: 800px;
+            height: 50px;
+            border: 1px solid #333;
+            margin: 100px auto;
+            padding-top: 10px;
+        } */
+        /*
+        .pagination > div {
+            float: left;
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid #333;
+            cursor: pointer;
+        }
+        .pagination > div.list,
+        .pagination > div.jump {
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+        .pagination > div > p {
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid #333;
+            float: left;
+            cursor: pointer;
+        }
+        .pagination > div > p.ignore {
+            border: 1px solid transparent;
+            cursor: default;
+        }
+        .pagination > div.jump > * {
+            float: left;
+            width: 30px;
+            height: 30px;
+            outline: none;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .pagination > div.jump > input {
+            height: 28px;
+        }
+        */
+    </style>
+</head>
+<body>
+    <div class="pagination"></div>
+    <!-- <div>
+    </div> -->
+    <!-- <div class="pagination">
+        <div class="first">first</div>
+        <div class="prev">prev</div>
+        <div class="list">
+            <p class="item">1</p>
+            <p class="item">2</p>
+            <p class="ignore">...</p>
+            <p class="item">5</p>
+            <p class="item">6</p>
+            <p class="item">7</p>
+            <p class="item">8</p>
+            <p class="item">9</p>
+            <p class="ignore">...</p>
+            <p class="item">99</p>
+            <p class="item">100</p>
+        </div>
+        <div class="next">next</div>
+        <div class="last">last</div>
+        <div class="jump">
+            <input type="text" value="1">
+            <button>GO</button>
+        </div>
+    </div> -->
+    <script src="../JS/pagination.js"></script>
+    <script>
+        /**
+         * 1. 静态页面
+         * 2. 书写
+        */
+
+        const p = new Pagination('.pagination', {
+            total: 1000,
+            pagesize: 13,
+            // current: 5,
+            prev: '<',
+            next: '>',
+            change (num) {
+                console.log('current改变了我要重新渲染页面了', num)
+            }
+        })
+        console.log(p)
+    </script>
+</body>
+</html>

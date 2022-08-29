@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		div {
+			width: 100px;
+			height: 100px;
+			background-color: violet;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<script src="./utils.js"></script>
+	<script>
+		var div = document.querySelector('div')
+		// div.addEventListener('click', function () {
+		// 	// div.style.left = '200px'
+		// 	let distance = 10
+		// 	let timer = setInterval(() => {
+		// 		distance += 10
+		// 		div.style.left = distance + 'px'
+		// 		if (distance >= 200) {
+		// 			clearInterval(timer)
+		// 		}
+		// 	}, 30);
+		// })
+		div.addEventListener('click', function () {
+			// move(div, 'left', 200)
+			// move(div, { left: 200 })
+			move(div, { left: 200, top: 600, opacity: 0.2 }, end)
+			function end () {
+				div.style.backgroundColor = 'black'
+			}
+		})
+
+		function move (ele, target, fn = () => {}) {
+			let count = 0
+			for (let key in target) {
+				if (key === 'opacity') target[key] *= 100
+				count++
+				let timer = setInterval(() => {
+					let current = key === 'opacity' ? getStyle(ele, 'opacity') * 100 : parseInt(getStyle(ele, key))
+					let distance = (target[key] - current) / 10
+					distance = distance > 0 ? Math.ceil(distance) : Math.floor(distance)
+					console.log('ing~')
+					if (current === target[key]) {
+						clearInterval(timer)
+						count--
+						if (!count) {
+							// console.log('结束')							
+							// ele.style.background = 'skyblue'
+							fn()
+						}
+					} else {
+						ele.style[key] = key === 'opacity' ? (current + distance) / 100 : current + distance + 'px'
+					}
+				}, 30)
+			}
+		}
+
+		/* 6
+		function move (ele, target) {
+			let count = 0
+			for (let key in target) {
+				if (key === 'opacity') target[key] *= 100
+				count++
+				let timer = setInterval(() => {
+					let current = key === 'opacity' ? getStyle(ele, 'opacity') * 100 : parseInt(getStyle(ele, key))
+					let distance = (target[key] - current) / 10
+					distance = distance > 0 ? Math.ceil(distance) : Math.floor(distance)
+					console.log('ing~')
+					if (current === target[key]) {
+						clearInterval(timer)
+						count--
+						if (!count) {
+							// console.log('结束')							
+							ele.style.background = 'skyblue'
+						}
+					} else {
+						ele.style[key] = key === 'opacity' ? (current + distance) / 100 : current + distance + 'px'
+					}
+				}, 30)
+			}
+		}
+		*/
+
+		/*5
+		// opacity 只能到0
+		function move (ele, target) {
+			for (let key in target) {
+				let timer = setInterval(() => {
+					let current = key === 'opacity' ? getStyle(ele, 'opacity') * 100 : parseInt(getStyle(ele, key))
+					let distance = (target[key] - current) / 10
+					distance = distance > 0 ? Math.ceil(distance) : Math.floor(distance)
+					console.log('ing~')
+					if (current === target[key]) {
+						clearInterval(timer)
+					} else {
+						ele.style[key] = key === 'opacity' ? (current + distance) / 100 : current + distance + 'px'
+					}
+				}, 30)
+			}
+		}
+		*/
+
+		/*4
+		// 运动不了 opacity
+		function move (ele, target) {
+			for (let key in target) {
+				let timer = setInterval(() => {
+					let current = parseInt(getStyle(ele, key))
+					let distance = (target[key] - current) / 10
+					distance = distance > 0 ? Math.ceil(distance) : Math.floor(distance)
+					console.log('ing~')
+					if (current === target[key]) {
+						clearInterval(timer)
+					} else {
+						ele.style[key] = current + distance + 'px'
+					}
+				}, 30)
+			}
+		}
+		*/
+
+		/*3
+		// 属性值不一样的时候走不出对角线
+		// 不从零开始的时候，会先回到零
+		function move (ele, target) {
+			for (let key in target) {
+				let distance = 0
+				console.log(key)
+				let timer = setInterval(() => {
+					distance += 10
+					ele.style[key] = distance + 'px'
+					if (distance >= target[key]) {
+						clearInterval(timer)
+					}
+				}, 30)
+			}
+		}
+		*/
+
+		/*2
+		// 只能运动一个属性
+		function move (ele, type, target) {
+			let distance = 0
+			let timer = setInterval(() => {
+				distance += 10
+				ele.style[type] = distance + 'px'
+				if (distance >= target) {
+					clearInterval(timer)
+				}
+			}, 30)
+		}
+		*/
+
+		/*1
+		for (let i = 0; i < 3; i++) {
+			console.log(i)
+		}
+		for (var i = 0; i < 3; i++) {
+			console.log(i)
+		}
+		let arr = [1, 2, 3, 4]
+		let [a, b, c, d] = arr
+		console.log(a, b, c, d)
+		*/
+		
+	</script>
+</body>
+</html>

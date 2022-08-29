@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        ul, li {
+            list-style: none;
+        }
+        .box {
+            width: 1200px;
+            margin: 30px auto;
+            border: 1px solid #333;
+        }
+        .box > .top {
+            height: 40px;
+            background-color: skyblue;
+        }
+        .box > ul {
+            padding: 20px;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .box > .button {
+            height: 80px;
+            background-color: skyblue;
+            overflow: hidden;
+        }
+        .box > .button > p {
+            line-height: 80px;
+            margin-left: 30px;
+            font-size: 30px;
+            float: left;
+        }
+        .box > .button > button {
+            height: 30px;
+            float: left;
+            margin-top: 25px;
+            margin-left: 20px;
+        }
+        .box > ul > li {
+            height: 100px;
+            border: 1px solid #333;
+            margin-bottom: 10px;
+        }
+        .box > ul > li > .select {
+            float: left;
+            width: 100px;
+            height: 100%;
+            border-right: 1px solid #333;
+            position: relative;
+        }
+        .box > ul > li > .select input {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        .box > ul > li > .img {
+            width: 100px;
+            padding: 0 10px;
+            float: left;
+        }
+        .box > ul > li > .desc {
+            width: 200px;   
+            height: 100%;
+            float: left;
+            background-color: violet;
+        }
+        .box > ul > li > .price,
+        .box > ul > li > .xiaoji {
+            float: left;
+            width: 200px;
+            line-height: 100px;
+            font-size: 30px;
+            color: red;
+            text-align: center;
+        }
+        .box > ul > li > .number {
+            width: 200px;
+            float: left;
+            padding-top: 35px;
+        }
+        .box > ul > li > .number > input, .box > ul > li > .number > button {
+            width: 30px;
+            height: 30px;
+            
+        }
+        .box > ul > li > .number > input {
+            border: none;
+            outline: none;
+        }
+        .box > ul > li > .del {
+            padding-top: 35px;
+            float: left;
+        }
+        .box > ul > li > .del > button {
+            padding: 0 10px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>我是购物车页面</h1>
+    <div class="box">
+        <!-- <div class="top">
+            全选: <input type="checkbox">
+        </div>
+        <ul>
+            <li>
+                <div class="select">
+                    <input type="checkbox">
+                </div>
+                <div class="img">
+                    <img src="https://img10.360buyimg.com/seckillcms/s140x140_jfs/t1/142603/25/28046/22057/62eb6f93Ec2849b16/0b9b849ca51578e7.jpg.webp" alt="">
+                </div>
+                <div class="desc">
+                    我是一个描述文本，介绍一下商品
+                </div>
+                <div class="price">
+                    ￥49.99
+                </div>
+                <div class="number">
+                    <button>-</button>
+                    <input type="text" value="1">
+                    <button>+</button>
+                </div>
+                <div class="xiaoji">
+                    ￥49.99
+                </div>
+                <div class="del">
+                    <button>删除</button>
+                </div>
+            </li>
+        </ul>
+        <div class="button">
+            <p>总计: 10 件</p>
+            <button>去结算</button>
+            <button>清空</button>
+            <button>继续购物</button>
+            <p>总价: 129.49 元</p>
+        </div> -->
+    </div>
+
+    <script src="./lib/template-web.js"></script>
+    <!-- 模板  -->
+    <script type="text/template" id="tmp">
+        <div class="top">
+            全选: <input type="checkbox">
+        </div>
+        <ul>
+            {{ each list }}
+            <li>
+                <div class="select">
+                    <input type="checkbox">
+                </div>
+                <div class="img">
+                    <img src="{{ $value.goods_big_logo }}" alt="">
+                </div>
+                <div class="desc">
+                    {{ $value.goods_name }}
+                </div>
+                <div class="price">
+                    ￥{{ $value.goods_price }}
+                </div>
+                <div class="number">
+                    <button {{ $value.cart_number == 1 && 'disabled' }}>-</button>
+                    <input type="text" value="{{ $value.cart_number }}">
+                    <button>+</button>
+                </div>
+                <div class="xiaoji">
+                    ￥{{ $value.goods_price * $value.cart_number }}
+                </div>
+                <div class="del">
+                    <button>删除</button>
+                </div>
+            </li>
+            {{ /each }}
+        </ul>
+        <div class="button">
+            <p>总计: {{ total }} 件</p>
+            <button>去结算</button>
+            <button>清空</button>
+            <button>继续购物</button>
+            <p>总价: {{ totalprice }} 元</p>
+        </div>
+    </script>
+    <script>
+        // console.log(JSON.parse(window.localStorage.getItem('cart')))
+
+        // 0. 获取元素
+        var box = document.querySelector('.box')
+        // 1. 从 localStorage 里拿到数据
+        var cart = JSON.parse(window.localStorage.getItem('cart')) || []
+        // 2. 判断数组空否
+        if (!cart.length) {
+            box.innerHTML = '您还没有添加购物车，赶紧选购⑧ ^_^ '
+        } else {
+            // 3. 准备各种数据
+            var total = 0
+            var totalprice = 0
+            cart.forEach(function (item) {
+                total += item.cart_number
+                totalprice += item.cart_number * item.goods_price
+            })  
+            var str = template('tmp', {
+                list: cart,
+                total: total,
+                totalprice: totalprice.toFixed(2)
+            })
+            box.innerHTML = str
+        }
+    </script>
+</body>
+</html>

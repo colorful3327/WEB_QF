@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my forEach</title>
+</head>
+<body>
+    <div>
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+        <p>5</p>
+        <p>6</p>
+        <p>7</p>
+        <p>8</p>
+        <p>9</p>
+        <p>10</p>
+    </div>
+    <script>
+        /**
+         * 模拟forEach
+         * 方法写在哪儿? Array.prototype上
+        */
+
+        Array.prototype.myForEach = function (fn) {
+            // console.log(this)
+            for (var i = 0; i < this.length; i++) {
+                // console.log('我执行了')
+                // 这里根据你要遍历的对象有多少成员执行多少回
+                // this[i]就是你要遍历的数组里的每一项
+                // this就是要遍历的数组
+                fn(this[i], i, this)
+            }
+        }
+        // ;[1, 2, 3, 4].myForEach(function a(item, index, arr) {
+        //     console.log('我执行了', item, index, arr)
+        // })
+
+        // 就是说，myForEach里的this指向谁 就遍历谁
+
+        var div = document.querySelector('div')
+        // console.log(div.children)
+
+        // 为啥会遍历数组? 因为这个myForEach里面的this指向前面的数组
+        // ;[].myForEach(function () {})
+        // 所以说，用call() 把myForEach里的this的指向改了 改成div.children
+        // 此时myForEach就遍历div.children了
+        ;[].myForEach.call(div.children, function (item, index, arr) {
+            console.log(item, index, arr)
+        })
+
+    </script>
+</body>
+</html>

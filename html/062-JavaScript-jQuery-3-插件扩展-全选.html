@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery插件扩展-全选</title>
+
+    <style>
+        *{margin: 0;padding: 0;}
+        .box {
+            width: 100px;
+            padding: 20px;
+            border: 1px solid #333;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="all">
+            <input type="checkbox"> 全选
+        </div>
+        <hr>
+        <div class="select">
+            <input type="checkbox"> 选项一 <br>
+            <input type="checkbox"> 选项二 <br>
+            <input type="checkbox"> 选项三 <br>
+            <input type="checkbox"> 选项四 <br>
+        </div>
+    </div>
+
+    <script src="./jquery-3.5.1.min.js"></script>
+    <!-- 插件引入在jQuery以后 -->
+    <script src="./utils.js"></script>
+
+    <script>
+        $('.all > input').change(function () {
+            $('.select > input').setChecked($(this).getChecked())
+        })
+        $('.select > input').change(function () {
+            $('.all > input').setChecked($('.select > input').selectAll())
+        })
+    </script>
+
+    <script>
+        /**
+         * 先准备一些扩展的内容
+         * 1. selectAll()
+         * 判断是否所有元素checked都是true
+         * 返回个布尔
+         * 2. setChecked()
+         * 执行就给元素集合内所有元素设置checked属性
+         * 3. getChecked()
+         * 拿到元素集合内第一个元素的checked属性
+         * 判断this内有没有数据 返回checked或者false
+        */
+
+        // 2 3
+        // $.extend($.fn, {
+        //     setChecked(type) {
+        //         for (var i = 0; i < this.length; i++) {
+        //             this[i].checked = type === false ? false : true
+        //         }
+        //         return this
+        //         // 为了能够继续链式编程
+        //     },
+        //     getChecked() {
+        //         if (this.length) return this[0].checked
+        //         return false
+        //     }
+        // })
+
+        // 1
+        // $.fn.extend({
+        //     selectAll() {
+        //         var flag = true
+        //         for (var i = 0; i < this.length; i++) {
+        //             // this 就是jQuery元素集合里的每一个 
+        //             if (!this[i].checked) {
+        //                 flag = false
+        //                 break
+        //             }
+        //         }
+        //         return flag
+        //     }
+        // })
+    </script>
+</body>
+</html>

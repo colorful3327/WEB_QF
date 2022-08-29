@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 分页器分页渲染 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        .pagination {
+            width: 650px;
+            height: 80px;
+            border: 2px solid violet;
+            margin: 30px auto;
+            padding-left: 150px;
+        }
+
+        .pagination>span,
+        .pagination li {
+            float: left;
+            line-height: 80px;
+            padding: 0 5px;
+            cursor: pointer;
+        }
+
+        .pagination li.active {
+            color: red;
+        }
+
+        table {
+            width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            border: 1px solid #333;
+        }
+
+        table>tbody>tr:nth-child(odd) {
+            background-color: skyblue;
+        }
+
+        table>tbody>tr:nth-child(even) {
+            background-color: palegreen;
+        }
+
+        table>tbody>tr:hover {
+            background-color: violet;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 分页器分页渲染 -->
+    <div class="pagination">
+        <span class="first">首页</span>
+        <span class="prev">上一页</span>
+        <ul class="pageList"></ul>
+        <span class="next">下一页</span>
+        <span class="last">尾页</span>
+    </div>
+    <table cellspacing=0>
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>ID</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>班级</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script src="./utils.js"></script>
+    <script>
+        /**
+         * 分页器分页渲染
+         * 1. 分析业务逻辑
+         * 准备若干条数据
+         * 决定一页多少条
+         * 计算多少页
+         *  根据计算的数字来渲染 ul 下面的 li
+         * 先拿出第一页数据渲染表格
+         * 当你点击切换按钮的时候
+         *  换到对应的页的数据显示
+         * 2. 代码实现
+         * 获取元素
+         *  .pageList, 每一页分页按钮渲染在里面
+         *  上一页/下一页···/ 按钮, 有事件
+         *  tbody, 表格要渲染在里面
+         * 准备数据
+         *  自己循环创建一个数组
+         * 3. 开始渲染分页按钮
+         * 根据多少条数据和一页显示多少计算多少页
+         *  123，11 Math.ceil(123 / 11)
+         * 拼接字符串
+         *  没有办法再创建的时候直接添加事件
+         * 创建节点
+         *  可以在创建的时候直接添加事件
+         * 4. 渲染第一页的表格数据
+         * 咱肯定不能使用 userList 渲染
+         *  从 userList 里面获取一部分渲染
+         *  splice 不行 直接操作原始数组
+         *  slice 行 不改变原始数组
+         * 准备新数组
+         *  根据第几页来决定拿到哪些数据
+         * 拆数组
+         *  拆的同时要渲染 把拆数组和渲染写在一个函数里面
+         *  每次切换的时候直接调用函数
+         *  [0]-[10] [11]-[21] [22]-[32] [(n-1)*11]-[n*11-1]
+         * 5. 绑定事件
+         * 下一页事件
+         *  改变 currentPage, 
+         *  列表按钮需要改变 active 位置
+         * 点击每个 li 的事件
+         * 6. 改变 active 的函数
+         * 循环遍历 ul 下面的所有子元素
+         *  让每一个都没有 active，让索引为 currentPage-1 的那个有。
+        */
+
+        // 1. 获取元素
+        var pageList = document.querySelector('.pageList')
+        var prevBtn = document.querySelector('.prev')
+        var nextBtn = document.querySelector('.next')
+        var firstBtn = document.querySelector('.first')
+        var lastBtn = document.querySelector('.last')
+        var tbody = document.querySelector('tbody')
+
+        var currentPage = 1         // 准备个当前页
+        // 2. 准备数据
+        var userList = []
+        var str1 = '赵钱孙李周吴郑王冯陈褚卫蒋沈韩杨'
+        var str2 = '一二三四五六七八九十'
+        var str3 = '男女'
+        for (var i = 0; i < 123; i++) {
+            userList.push({
+                id: i + 1,
+                username: str1[rangeRandom(0, 15)] + str2[rangeRandom(0, 9)],
+                gender: str3[rangeRandom(0, 1)],
+                age: rangeRandom(18, 23),
+                class: rangeRandom(2018, 2022)
+            })
+        }
+        // console.log(userList)
+        // 3. 渲染分页按钮
+        var totlePage = Math.ceil(userList.length / 11)
+        var frg = document.createDocumentFragment()
+        for (var i = 1; i <= totlePage; i++) {
+            var li = document.createElement('li')
+            li.innerHTML = i
+            li.dataset.page = i
+            if (i === 1) li.className = 'active'
+            li.onclick = function () {
+                // console.log('点击事件')
+                var page = this.dataset.page - 0
+                currentPage = page
+                bindHtml()
+            }
+            frg.appendChild(li)
+        }
+        pageList.appendChild(frg)
+        // 4. 准备一个函数渲染页面
+        function bindHtml() {
+            var bindList = userList.slice((currentPage - 1) * 11, currentPage * 11)
+            var str = ''
+            bindList.forEach(function (item, index) {
+                str += `
+                    <tr>
+                        <td>${ index + 1 }</td>
+                        <td>${ item.id }</td>
+                        <td>${ item.username }</td>
+                        <td>${ item.gender }</td>
+                        <td>${ item.age }</td>
+                        <td>${ item.class }</td>
+                        <td>
+                            <button>编辑</button>
+                            <button>删除</button>
+                        </td>
+                    </tr>
+                `
+            })
+            tbody.innerHTML = str
+            changeCurrent()         // 改变 active 的位置
+        }
+        bindHtml()
+        // 5. 绑定事件
+        nextBtn.onclick = function () {
+            if (currentPage === totlePage) return
+            currentPage++
+            bindHtml()
+        }
+        prevBtn.onclick = function () {
+            if (currentPage === 1) return
+            currentPage--
+            bindHtml()
+        }
+        firstBtn.onclick = function () {
+            if (currentPage === 1) return
+            currentPage = 1
+            bindHtml()
+        }
+        lastBtn.onclick = function () {
+            if (currentPage === totlePage) return
+            currentPage = totlePage
+            bindHtml()
+        }
+        // 准备一个改变 active 的函数
+        function changeCurrent() {
+            for (var i = 0; i < pageList.children.length; i++) {
+                pageList.children[i].className = ''
+            }
+            pageList.children[currentPage - 1].className = 'active'
+        }
+
+        document.onselectstart = function (e) { e.preventDefault() }
+    </script>
+</body>
+
+</html>

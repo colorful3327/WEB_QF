@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* #inp {
+            width: 49px;
+            height: 20px;
+            border: 1px solid violet;
+        } */
+        * {margin: 0;padding: 0;}
+        .outer {
+            width: 500px;
+            height: 500px;
+            background-color: skyblue;
+            position: relative;
+            margin: 100px auto;
+        }
+        .center {
+            width: 300px;
+            height: 300px;
+            background-color: orange;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        .inner {
+            width: 100px;
+            height: 100px;
+            background-color: violet;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="center">
+            <div class="inner"></div>
+        </div>
+    </div>
+    <!-- <input type="text" id="inp"> -->
+    <script>
+        /**
+         * 1. 按下的是哪个键
+         * key 按下的内容，但IE低版本不支持
+         * keyCode 按下内容的编码 但火狐20以下版本不支持 它用which
+         * 2. 组合按键
+         * 属性的值都是布尔值
+         * altKey
+         *  Mac是options键
+         * ctrlKey
+         * shiftKey
+         * metaKey
+         *  window键(IE 不支持) / Mac是command键
+         * true就表示同时按下，可以多个(多个上述键)
+        */
+
+
+
+
+        // var inp = document.getElementById('inp')
+        // inp.addEventListener('keydown', function (e) {
+        //     e = e || window.event
+        //     // console.log(e.key)
+        //     console.log(e.keyCode)
+        //     if (e.shiftKey && e.keyCode === 65) {
+        //         console.log('Shift + a + b')
+        //     }
+        // })
+    </script>
+</body>
+</html>

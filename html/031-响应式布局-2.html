@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{margin: 0;padding: 0;}
+        .top{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .top>div{
+            width: 49%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .top .right div{
+            width: 49%;
+        }
+        .top img{
+            width: 100%;
+        }
+        @media screen and (max-width:768px) {
+            .top>div{
+                width: 100%; 
+            }
+        }
+
+        .bottom{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .bottom>div{
+            width: 23%;
+            padding: 5px;
+            border: 1px dashed skyblue;
+            margin-bottom: 10px;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 0 5px gray;
+        }
+        .bottom>div img{
+            width: 100%;
+        }
+        @media screen and (max-width:1024px) and (min-width:768px) {
+            .bottom>div{
+                width: 32%;
+            }
+        }
+        @media screen and (min-width:450px) and (max-width:768px) {
+            .bottom>div{
+                width: 48%;
+            }
+        }
+        @media screen and (max-width:450px){
+            .bottom>div{
+                width: 96%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="top">
+        <div class="left">
+            <img src="images/feiman.png" alt="">
+        </div>
+        <div class="right">
+            <div>
+                <img src="images/020.png" alt="">
+            </div>
+            <div>
+                <img src="images/020.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom">
+        <div>
+            <img src="images/zhihu.png" alt="">
+            <p>大风起兮</p>
+        </div>
+        <div>
+            <img src="images/zhihu.png" alt="">
+            <p>云飞扬</p>
+        </div>
+        <div>
+            <img src="images/zhihu.png" alt="">
+            <p>威加海内兮</p>
+        </div>
+        <div>
+            <img src="images/zhihu.png" alt="">
+            <p>归故乡</p>
+        </div>
+        <div>
+            <img src="images/zhihu.png" alt="">
+            <p>安得</p>
+        </div>
+        <div>
+            <img src="images/zhihu.png" alt="">
+            <p>猛士兮</p>
+        </div>
+        <div>
+            <img src="images/zhihu.png" alt="">
+            <p>守</p>
+        </div>
+        <div>
+            <img src="images/zhihu.png" alt="">
+            <p>四方</p>
+        </div>
+        <div>
+            <img src="images/zhihu.png" alt="">
+            <p>汉</p>
+        </div>
+        <div>
+            <img src="images/zhihu.png" alt="">
+            <p>刘邦</p>
+        </div>
+        <div>
+            <img src="images/zhihu.png" alt="">
+            <p>大风歌</p>
+        </div>
+    </div>
+</body>
+</html>

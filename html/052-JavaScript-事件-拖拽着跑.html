@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		div {
+			width: 800px;
+			height: 800px;
+			border: 10px solid violet;
+			border-radius: 15px;
+			margin: 100px auto;
+
+			position: relative;
+		}
+		p {
+			width: 100px;
+			height: 100px;
+			background-color: skyblue;
+
+			position: absolute;
+			top: 100px;
+			left: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<p></p>
+	</div>
+	<script>
+		/**
+		 * 拖拽
+		 * 按下绑定 抬起解绑 
+		 * 缺点 每次按下抬起都是操作 dom
+		 * 还是用开关吧
+		 * 太快了跟不上?
+		 * 在 div 上也来个绑定，扩大判定范围
+		 * 边界值判断
+		 * 上下左右 0, div的高client-p的高offset, 0, div的宽-p的宽
+		*/
+		var div = document.querySelector('div')
+		var p = document.querySelector('p')
+		var flag = false
+		p.addEventListener('mousedown', function () {
+			flag = true
+		})
+		p.addEventListener('mouseup', function () {
+			flag = false
+		})
+		div.addEventListener('mousemove', function (e) {
+			if (!flag) return
+			e = e || window.event
+			var x = e.pageX - div.offsetLeft - parseInt(getComputedStyle(div).borderLeftWidth) - p.offsetWidth / 2
+			var y = e.pageY - div.offsetTop - parseInt(getComputedStyle(div).borderTopWidth) - p.offsetHeight / 2
+			if (x <= 0) x = 0
+			if (y <= 0) y = 0
+			if (x >= div.clientWidth - p.offsetWidth) x = div.clientWidth - p.offsetWidth
+			if (y >= div.clientHeight - p.offsetHeight) y = div.clientHeight - p.offsetHeight
+			p.style.left = x + 'px'
+			p.style.top = y + 'px'
+		})
+	</script>
+</body>
+</html>

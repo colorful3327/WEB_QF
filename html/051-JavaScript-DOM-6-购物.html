@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        body > div {
+            width: 1200px;
+            margin: 0 auto;
+        }
+        ul > li {
+            list-style: none;
+        }
+        .header, .footer {
+            height: 300px;
+            line-height: 300px;
+            text-align: center;
+            font-size: 100px;
+            background-color: skyblue;
+            color: #fff;
+        }
+        .container > ul {
+            width: 100%;
+            padding-top: 10px;
+            overflow: hidden;
+        }
+        .container > ul > li {
+            float: left;
+            width: calc(100% / 5 - 10px - 2px);
+            margin: 0 5px 10px;
+            border: 1px solid #333;
+            height: 300px;
+        }
+        .container > ul > li > .img {
+            margin: 30px auto;
+            width: 150px;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        li p {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        .loading {
+            position: relative;
+            height: 100px;
+            display: none;
+        }
+        .loading.active {
+            display: block;
+        }
+        .loading > img {
+            width: 200px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">头部</div>
+    <div class="container">
+        <ul>
+
+        </ul>
+    </div>
+    <div class="loading">
+        <img src="https://ts1.cn.mm.bing.net/th/id/R-C.cbd067b8c2e7cea8c9ed68751dc6ee21?rik=LukJ60mbXpNnwg&riu=http%3a%2f%2fimg.zcool.cn%2fcommunity%2f015ae6568f4d2732f87574be749350.gif&ehk=KgMQGBUuSWdrcaGh9Uv2ZR%2bzGblfDh2aZOy8XRTBz9k%3d&risl=&pid=ImgRaw&r=0" alt="">
+    </div>
+    <div class="footer">底部</div>
+    <script src="./utils.js"></script>
+    <script>
+        /**
+         * 下拉刷新分页渲染
+        */
+        // data
+        var data = []
+        var str1 = '赵钱孙李周吴郑王冯陈褚卫蒋沈韩杨'
+        var str2 = '一二三四五六七八九十'
+        for (var i = 0; i < 129; i++) {
+            data.push({
+                goods_id: i + 1,
+                cart_number: 0,
+                goods_big_logo: 'https://img10.360buyimg.com/seckillcms/s140x140_jfs/t1/142603/25/28046/22057/62eb6f93Ec2849b16/0b9b849ca51578e7.jpg.webp',
+                goods_name: str1[rangeRandom(0, 15)] + str2[rangeRandom(0, 9)],
+                goods_price: rangeRandom(129, 49129)
+            })
+        }
+        // 1.
+        var listBox = document.querySelector('.container > ul')
+        var windowHeight = document.documentElement.clientHeight
+        var ulOffsetTop = listBox.offsetTop
+        var loading = document.querySelector('.loading')
+
+        var totlePage = Math.ceil(data.length / 20)     // 总共多少页
+        var currentPage = 1                             // 当前页
+        var flag = false                                // 开关 
+        // 2.
+        function bindHtml() {
+            var bindList = data.slice((currentPage - 1) * 20, currentPage * 20)
+            var str = ''
+            var frg = document.createDocumentFragment()
+            bindList.forEach(function (item) {
+                var li = document.createElement('li')
+                li.innerHTML = `
+                <li>
+                    <div class="img">
+                        <img src="${ item.goods_big_logo }" alt="">
+                    </div>
+                    <p>${ item.goods_name }</p>
+                    <span>￥${ item.goods_price.toFixed(2).big().fontcolor('red') }</span>
+                </li>
+                `
+                var btn = document.createElement('button')
+                btn.innerHTML = '加入购物车'
+                btn.setAttribute('goodsid', item.goods_id)
+                btn.onclick = addCart
+                li.appendChild(btn)
+
+                frg.appendChild(li)
+            })
+            listBox.appendChild(frg)
+            flag = true
+            loading.classList.remove('active')
+        }
+        bindHtml()
+        // 3. 滚动事件
+        window.onscroll = function () {
+            var scrollTop = (document.documentElement.scrollTop || document.body.scrollTop) + windowHeight
+            // ul 的高
+            var ulHeight = listBox.offsetHeight + listBox.offsetTop
+
+            if (scrollTop < ulHeight) return
+            if (currentPage === totlePage) return
+            if (!flag) return
+            flag = false
+
+            loading.classList.add('active')
+
+            setTimeout(function () {
+                currentPage++
+                bindHtml()
+            }, 1000)
+        }
+
+        /**
+         * 加入购物车功能
+         * 1. 涉及到两个页面
+         * 跨页面通讯
+         *  localStorage 浏览器的本地存储
+         * 准备个数组，点击添加购物车的时候 
+         *  把这个对象放在数组里面，数组里面有这个数据则number++，没有直接push
+         * 2. 需要点击事件
+         *  每个 button 都要有
+         *  包括后来渲染上去的 button 按钮都要有点击事件
+         * 
+         * 加入购物车代码实现
+         * 1. 点击事件里面
+         * 拿到当前渲染 li 的那一条数据，渲染页面的时候 把这条数据的 id 渲染上去
+         * 拿到元素身上的 goodsid 自定义属性
+         * 2. 去到原始数组里面找到 id 对应的数据
+         * find / filter
+         * 3. 把数据存到数组里
+         * 数组从哪儿来?
+         *  创建? 不行，回来再点的时候又从头开始了
+         *  那怎么办? 直接从 localStorage 里面获取。有就直接用，没有就加，再次打开也不怕
+         * 4. 向数组里面添加
+         * 空数组直接push 同时cart_number=1
+         * 非空: 看看有没有，没有push 同时cart_number=1，有则cart_number++
+         * 
+        */
+
+        function addCart () {
+            // console.log('我要加入购物车了~')
+            // console.log(this)
+            var goodsId = this.getAttribute('goodsid') - 0
+            // console.log(goodsId)
+            var goods = data.find(function (item) { return item.goods_id === goodsId } )
+            // console.log(goods)
+            var list = JSON.parse(window.localStorage.getItem('cart')) || []
+            // console.log(list)
+            if (!list.length) {
+                goods.cart_number = 1
+                list.push(goods)
+            } else {
+                // some() 只要数组里任意一个满足就 true，看看数组里的id是不是有和我点的这个id一样的
+                var res = list.some(function (item) { return item.goods_id === goodsId })
+                if (res) {
+                    // 拿到索引
+                    var index = list.findIndex(function (item) {return item.goods_id === goodsId})
+                    list[index].cart_number++
+                } else {
+                    goods.cart_number = 1
+                    list.push(goods)
+                }
+            }
+            // 组装好的数组存储起来
+            window.localStorage.setItem('cart', JSON.stringify(list))
+        }
+    </script>
+</body>
+</html>

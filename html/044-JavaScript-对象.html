@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var obj = {}
+        // obj['name'] = 'jack'
+        // obj.age = 18
+        // console.log(obj)
+
+
+        function fn() {
+            console.log(123)
+
+            // console.log(age)
+            // 访问的是age变量 是栈内存里面的age成员 
+            // 然而咱们栈内存里面妹有age这个变量 只有fn这个变量 它指向一个存储空间
+            // 在这个存储空间里才有age成员 来下面这个fn.age
+
+            console.log(fn.age)
+        }
+        // 把一个函数当做一个对象来看
+        fn.age = 18
+        fn['gender'] = '男'
+        fn()
+        console.log(fn)
+        console.dir(fn)
+
+
+
+    </script>
+</body>
+</html>

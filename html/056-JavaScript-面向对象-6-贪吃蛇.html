@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贪吃蛇</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        button, input {
+            padding: 20px;
+            outline: none;
+            font-size: 22px;
+        }
+        .map {
+            width: 800px;
+            height: 600px;
+            background: url('./images/tanchishe/bg.png');
+            background-size: 20px 20px;
+            border: 10px solid violet;
+            margin: 11px auto;
+            position: relative;
+        }
+        .map > .food {
+            width: 20px;
+            height: 20px;
+            background: url('./images/tanchishe/food.png');
+            background-size: 20px 20px;
+            position: absolute;
+            /* left: 100px;
+            top: 100px;  */
+        }
+        .map > .head {
+            width: 20px;
+            height: 20px;
+            background: url('./images/tanchishe/head.png');
+            background-size: 20px 20px;
+            position: absolute;
+            /* left: 60px;
+            top: 0px;  */
+        }
+        .map > .body {
+            width: 20px;
+            height: 20px;
+            background: url('./images/tanchishe/body.png');
+            background-size: 20px 20px;
+            position: absolute;
+            /* left: 40px;
+            top: 0px;  */
+        }
+    </style>
+</head>
+<body>
+    <button class="start">开始</button>
+    <button class="stop">停止</button>
+    <button class="restart">重新开始</button>
+    <input type="text" value="0" class="score">
+
+    <div class="map">
+        <!-- <div class="food"></div>
+        <div class="head"></div>
+        <div class="body"></div> -->
+    </div>
+
+    <!-- <script src="../JS/food.js"></script>
+    <script src="../JS/snake.js"></script>
+    <script src="../JS/game.js"></script> -->
+    <script>
+        /**
+         * 拆成四个模块
+         * 食物模块
+         * 蛇模块
+         * 游戏设置
+         * 整合
+         * 1. 食物模块
+         * 创建标签 类名food，
+         * 计算位置
+         * 插入到地图里面
+         * 2. 蛇
+         * 准备数组 存储蛇[head, body, body] 尾变头
+         * 准备变量存储方向
+         * 准备方法计算下个头的位置
+         * 准备方法给蛇加一节
+         * 调用pos得到坐标 原来snake数组里有东西 把第一个改成body 没有直接加 类名head
+         * 准备方法 初始化 蛇
+         * 按照你的要求 几节都行
+         * 准备一个方法 移动一格 蛇
+         * 把数组最后一个删除 从页面把最后一个移出 加一个头
+         * 准备方法 死亡判断 0-800 0-600 自己碰自己
+         * 准备方法 判断是不是吃到食物 
+         * 3. 游戏规则
+         * 初始化 new 蛇和食物
+         * 准备变量表示等级
+         * 准备方法根据等级设置速度
+         * 准备方法暂停 关闭定时器
+         * 准备方法重新开始 重新加载页面
+         * 准备方法修改方向 
+         * 给document绑定一个键盘按下事件 根据keyCode判断方向修改
+         * 准备方法 计分
+         * 准备变量记录吃了多少 根据吃更新分数
+         * 
+         * 模块化开发
+         * 准备一个main.js
+        */
+
+
+        // const map = document.querySelector('.map')
+
+        // const f = new Food(map)
+        // console.log(f)
+
+        // const s = new Snake(map) 
+        // console.log(s)
+
+        // const g = new Game('.map', '.score')
+        // console.log(g)
+
+    </script>
+
+    <script src="../JS/main.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>判断移入角度</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .content {
+            width: 300px;
+            height: 300px;
+            line-height: 300px;
+            font-size: 30px;
+            border: 1px solid #333;
+            text-align: center;
+            margin: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+        .mask {
+            width: 300px;
+            height: 300px;
+            background-color: rgba(245, 245, 119, 0.5);
+            position: absolute;
+            top: -100%;
+            /* top: 0; */
+            left: 0;
+            /* 避免遮罩层影响content */
+            pointer-events: none; 
+        }
+        p.x {
+            width: 1px;
+            height: 600px;
+            background-color: red;
+            position: absolute;
+            top: 100px;
+            left: 451px;
+        }
+        p.y {
+            width: 600px;
+            height: 1px;
+            background-color: red;
+            position: absolute;
+            top: 451px;
+            left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 判断移入角度 -->
+    <div class="content">
+        盒子内部显示的内容
+        <!-- 遮罩层 -->
+        <div class="mask"></div>
+    </div>
+    <!-- <p class="x"></p>
+    <p class="y"></p> -->
+    <script>
+        /**
+         * 1. 获取元素
+         * .content 判断进入角度
+         * .mask 瞬间定位，移动
+         * 2. 绑定事件
+         * mouseover
+         *  获取坐标 offset
+         * 确定坐标原点
+         *  元素的 offsetLeft + 元素宽度的一半
+         * 根据坐标计算进入的角度
+         *  JS 拿不到角度，只能拿到一个弧度
+         *  Math.atan2(y, x) 拿到弧度
+         *  1度 = 1弧度 * (180 / PI)
+         *  得到角度 顺时针12点开始: -90 ~ 0 ~ 90 ~ 180
+         *  不方便，咱 +180° 吧
+         * 3. 根据角度定位
+         *  设置延迟 定时器
+         * 4. 干掉 transition
+         * 5. 同样的再来一套 
+        */
+        var content = document.querySelector('.content')
+        var mask = document.querySelector('.mask')
+        content.addEventListener('mouseover', function (e) {
+            e = e || window.event
+            // 设置新的原点
+            var originX = content.offsetLeft + content.offsetWidth / 2
+            var originY = content.offsetTop + content.offsetHeight / 2
+            // console.log(originX, originY)
+            // 获取根据坐标原点来的坐标
+            var mouseX = e.pageX - originX
+            var mouseY = e.pageY - originY
+            // console.log(mouseX, mouseY)
+            // 计算角度
+            var deg = Math.atan2(mouseY, mouseX) * (180 / Math.PI)
+            var degNum = Math.round((deg + 180) / 90) % 4
+            // console.log(degNum)
+
+            // 每次瞬间定位前 transition 干掉
+            mask.style.transition = 'none'
+
+            switch (degNum) {
+                case 0:
+                    mask.style.left = '-100%'
+                    mask.style.top = 0
+                    break
+                case 1:
+                    mask.style.left = '0'
+                    mask.style.top = '-100%'
+                    break
+                case 2:
+                    mask.style.left = '100%'
+                    mask.style.top = '0'
+                    break
+                case 3:
+                    mask.style.left = '0'
+                    mask.style.top = '100%'
+                    break
+            }
+            setTimeout(function() {
+                mask.style.transition = 'all .49s linear'
+                mask.style.left = 0
+                mask.style.top = 0
+            }, 20);
+        })
+
+        content.addEventListener('mouseout', function (e){
+            e = e || window.event
+            var originX = content.offsetLeft + content.offsetWidth / 2
+            var originY = content.offsetTop + content.offsetHeight / 2
+            var mouseX = e.pageX - originX
+            var mouseY = e.pageY - originY
+            var deg = Math.atan2(mouseY, mouseX) * (180 / Math.PI)
+            var degNum = Math.round((deg + 180) / 90) % 4
+            // mask.style.transition = 'none'
+            switch (degNum) {
+                case 0:
+                    mask.style.left = '-100%'
+                    mask.style.top = 0
+                    break
+                case 1:
+                    mask.style.left = '0'
+                    mask.style.top = '-100%'
+                    break
+                case 2:
+                    mask.style.left = '100%'
+                    mask.style.top = '0'
+                    break
+                case 3:
+                    mask.style.left = '0'
+                    mask.style.top = '100%'
+                    break
+            }
+            // setTimeout(function() {
+            //     mask.style.transition = 'all 1s linear'
+            //     mask.style.left = 0
+            //     mask.style.top = 0
+            // }, 20);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        :root, body{height: 100%;}
+        /* div, p{
+            width: auto;
+            height: auto;
+            background-color: violet;
+        } */
+        .child+li{
+            background-color: wheat;
+        }
+        [class]{
+            background-color: skyblue;
+        }
+        li:last-child{
+            background-color: red;
+        }
+        p:nth-child(1){
+            background-color: palegreen;
+        }
+
+        div>div{
+            display: none;
+        }
+        div>div:target{
+            display: block;
+        }
+        input:focus{
+            background-color: chocolate;
+        }
+        input[type=checkbox]{
+            /* 去掉默认样式 */
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            border: 1px solid black;
+        }
+        input:checked{
+            border: 2px solid rebeccapurple;
+        }
+        div::selection{
+            background-color: lawngreen;
+            color: firebrick;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit ullam, explicabo corporis aspernatur ducimus numquam ab sunt necessitatibus nemo iste ea animi dignissimos facere aperiam itaque quam commodi sequi qui?
+    </div>
+    <form action="">
+        用户名: <input type="text"><br>
+        密码: <input type="password"><br>
+        记住名字<input type="checkbox"><br>
+        <input type="submit">
+    </form>
+
+    <div class="box1">div-1
+        <ul>
+            <li class="child">div-child-p-1</li>
+            <li>div-child-p-2</li>
+        </ul>
+    </div>
+    <div class="box2">div-2</div>
+    <div>div-3</div>
+    <div>
+        <p class="p1">p-1</p>
+        <p class="p2">p-2</p>
+        <p>p-3</p>    
+    </div>
+    
+    <div>
+        <a href="#aaa">AAA</a>
+        <div id="aaa">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum beatae cupiditate, qui voluptate minima delectus numquam minus consequuntur, eligendi nostrum, ad unde fuga impedit rem. Ullam excepturi earum odio tenetur?</div>
+    </div>
+    <div>
+        <a href="#bbb">BBB</a>
+        <div id="bbb">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum beatae cupiditate, qui voluptate minima delectus numquam minus consequuntur, eligendi nostrum, ad unde fuga impedit rem. Ullam excepturi earum odio tenetur?</div>
+    </div>
+    <div>
+        <a href="#ccc">CCC</a>
+        <div id="ccc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum beatae cupiditate, qui voluptate minima delectus numquam minus consequuntur, eligendi nostrum, ad unde fuga impedit rem. Ullam excepturi earum odio tenetur?</div>
+    </div>
+</body>
+</html>

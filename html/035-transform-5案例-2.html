@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{margin: 0;padding: 0;}
+        .box{
+            width: 444px;
+            border: 2px dashed skyblue;
+            margin: 0 auto;
+            position: relative;
+        }
+        img, p, h2{
+            transition: all 1s;
+        }
+        .box .pic{
+            width: 100%;
+        }
+        .box h2{
+            position: absolute;
+            top: 49px;
+            left: 22px;
+            color: white;
+            transform: translateY(-49px);
+            opacity: 0;
+        }
+        .box:hover h2{
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .box:hover .pic{
+            transform: translateY(-12px);
+            opacity: 0.66;
+        }
+        .box:hover p{
+            transform: translateY(-123px);
+            opacity: 1;
+            color: palegreen;
+        }
+        .box p{
+            position:absolute;
+            /* bottom: 0; */
+            left: 33px;
+            opacity: 0;
+        }
+        .musicBtn{
+            width: 23px;
+            position: absolute;
+            right: 6px;
+            top: 6px;
+
+            animation: run .66s linear infinite;
+        }
+        @keyframes run {
+            from{
+                transform: rotate(0);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="images/feiman.png" alt="" class="pic">
+        <div>
+            <h2>蛤蛤蛤</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora esse, cumque at et quae nihil harum aliquid. Aperiam deleniti quos blanditiis repudiandae asperiores hic impedit, tempora, voluptatum cum, laboriosam natus.</p>
+        </div>
+        <img src="images/windmill.png" alt="" class="musicBtn"> 
+    </div>
+</body>
+</html>

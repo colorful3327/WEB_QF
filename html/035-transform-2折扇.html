@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{margin: 0;padding: 0;}
+        ul{
+            width: 600px;
+            height: 400px;
+            border: 5px solid gray;
+            margin: 0 auto;
+            list-style: none;
+            position: relative;
+        }
+        li{
+            width: 60px;
+            height: 200px;
+            position: absolute;
+            left: 50%;
+            margin-left: -30px;
+            bottom: 40px;
+            text-align: center;
+            border-radius: 6px;
+            transform-origin: center bottom;
+            transition: all 1s;
+        } 
+        li:nth-child(7){
+            background-color: crimson;
+        }
+        li:not(:nth-child(7)){
+            opacity: 0;
+        }
+        ul:hover li{
+            box-shadow: 1px 3px 8px 2px black;
+            opacity: 1;
+        }
+        ul:hover li:nth-child(1){
+            background-color: purple;
+            transform: rotate(90deg);
+        }
+        ul:hover li:nth-child(2){
+            background-color: skyblue;
+            transform: rotate(75deg);
+        }
+        ul:hover li:nth-child(3){
+            background-color: darkgoldenrod;
+            transform: rotate(60deg);
+        }
+        ul:hover li:nth-child(4){
+            background-color: gold;
+            transform: rotate(45deg);
+        }
+        ul:hover li:nth-child(5){
+            background-color: lawngreen;
+            transform: rotate(30deg);
+        }
+        ul:hover li:nth-child(6){
+            background-color: palevioletred;
+            transform: rotate(15deg);
+        }
+        ul:hover li:nth-child(7){
+            background-color: crimson;
+            /* transform: rotate(0); */
+        }
+        ul:hover li:nth-child(8){
+            background-color: aqua;
+            transform: rotate(-15deg);
+        }
+        ul:hover li:nth-child(9){
+            background-color: teal;
+            transform: rotate(-30deg);
+        }
+        ul:hover li:nth-child(10){
+            background-color: olive;
+            transform: rotate(-45deg);
+        }
+        ul:hover li:nth-child(11){
+            background-color: blue;
+            transform: rotate(-60deg);
+        }
+        ul:hover li:nth-child(12){
+            background-color: mediumvioletred;
+            transform: rotate(-75deg);
+        }
+        ul:hover li:nth-child(13){
+            background-color: forestgreen;
+            transform: rotate(-90deg);
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+        <li>11</li>
+        <li>12</li>
+        <li>13</li>
+    </ul>
+</body>
+</html>

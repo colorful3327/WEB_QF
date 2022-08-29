@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        textarea{
+            width: 100px;
+            height: 100px;
+            resize: vertical;
+        }
+        fieldset{
+            border: 1px solid skyblue;
+            width: 233px;
+            height: 77px;
+        }
+    </style>
+</head>
+<body>
+    <h1>字段集</h1>
+    <fieldset>
+        <legend>个人信息</legend>姓名
+        <input type="text" name="" id="">
+        <br>
+        <input type="radio" name="nn">男
+        <input type="radio" name="nn">女
+    </fieldset>
+
+    <h1>文本域</h1>
+    <div>
+        <textarea name="" id="" cols="30" rows="10" placeholder="这是提示文字">这是预设文字</textarea>
+    </div>
+
+    <h1>表单: 单选框</h1>
+
+    <div>满意？
+        <input type="radio" name="ok">非常满意
+        <input type="radio" name="ok">满意
+        <input type="radio" name="ok">一般
+        <input type="radio" name="ok">不满意
+    </div>
+    <div>性别
+        <div>
+            <input type="radio" name="nm" id="man" checked="checked">
+            <label for="man">男</label>
+        </div>
+        <div><input type="radio" name="nm" id="woman">
+            <label for="woman">女</label>
+        </div>
+    </div>
+
+    <h1>复选框</h1>
+
+    <div>爱好？
+        <div>
+            <input type="checkbox" id="smoke" name="like">
+            <label for="smoke">抽烟</label>
+        </div>
+        <div>
+            <input type="checkbox" id="drink" name="like">
+            <label for="drink">喝酒</label>
+        </div>
+        <div>
+            <input type="checkbox" id="fair" name="like">
+            <label for="fair">烫头</label>
+        </div>
+    </div>
+
+    <div>上传文件
+        <div>
+            <input type="file">
+        </div>
+    </div>
+
+    <div>以图片代替提交按钮
+        <div>
+            <input type="image" src="">
+        </div>
+    </div>
+
+    <div>禁用、只读
+        <div>
+            <button disabled="disabled">禁用</button>
+            <br>
+            <input type="radio" disabled>选我选我
+            <br>
+            <input type="text" disabled value="你就看看">
+        </div>
+    </div>
+</body>
+</html>

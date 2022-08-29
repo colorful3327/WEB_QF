@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{margin: 0;padding: 0;}
+        :root, body{
+            height: 100%;
+        }
+        ul{
+            list-style: none;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+        }
+
+        header{
+            height: 44px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        header ul{
+            display: flex;
+            overflow: auto;
+            background-color: gray;
+        }
+        header ul li{
+            flex-shrink: 0;
+            line-height: 44px;
+            padding: 0 9px;
+        }
+        header ul li:hover{
+            color: red;
+            background-color: white;
+        }
+
+
+        ::-webkit-scrollbar{
+            display: none;
+        }
+        section{
+            flex: 1;
+            display: flex;
+            overflow: auto;
+        }
+        section ul{
+            width: 86px;
+            background-color: #f8f8f8;
+            overflow: auto;
+        }
+        section ul li{
+            height: 47px;
+            line-height: 47px;
+            text-align: center;
+            font-size: 14px;
+        }
+        section>div{
+            flex: 1;
+            /* background-color: skyblue; */
+            
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            text-align: center;
+            font-size: 12px;
+            overflow: auto;
+        }
+        section ul li:hover{
+            background-color: #ffffff;
+            color: #e93b3d;
+        }
+        .content div{
+            height: 91px;
+            width: 33.33%;
+            /* background-color: violet; */
+        }
+        .content img{
+            height: 62px;
+            width: 48px;
+            margin-top: 10px;
+        }
+
+
+
+        footer{
+            height: 43px;
+            border-top: 5px solid #e5e5e5;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <ul>
+            <li>电脑办公</li>
+            <li>玩具乐器</li>
+            <li>家居厨具</li>
+            <li>家具家装</li>
+            <li>男装</li>
+            <li>家居厨具</li>
+            <li>家具家装</li>
+            <li>男装</li>
+            <li>女装</li>
+            <li>童装</li>
+        </ul>
+    </header>
+    <section>
+        <ul>
+            <li>热门推荐</li>
+            <li>手机数码</li>
+            <li>京东超市</li>
+            <li>手机数码</li>
+            <li>电脑办公</li>
+            <li>玩具乐器</li>
+            <li>家居厨具</li>
+            <li>家具家装</li>
+            <li>男装</li>
+            <li>女装</li>
+            <li>童装</li>
+        </ul>
+
+        <div class="content">
+            <div>
+                <img src="images/jd-phone.png" alt="">
+                <p>空调</p>
+            </div>
+            <div>
+                <img src="images/jd-phone.png" alt="">
+                <p>冰箱</p>
+            </div>
+            <div>
+                <img src="images/jd-phone.png" alt="">
+                <p>电脑</p>
+            </div>
+            <div>
+                <img src="images/jd-phone.png" alt="">
+                <p>手机</p>
+            </div>
+            <div>
+                <img src="images/jd-phone.png" alt="">
+                <p>空调</p>
+            </div>
+            <div>
+                <img src="images/jd-phone.png" alt="">
+                <p>冰箱</p>
+            </div>
+            <div>
+                <img src="images/jd-phone.png" alt="">
+                <p>电脑</p>
+            </div>
+            <div>
+                <img src="images/jd-phone.png" alt="">
+                <p>手机</p>
+            </div>
+            <div>
+                <img src="images/jd-phone.png" alt="">
+                <p>空调</p>
+            </div>
+            <div>
+                <img src="images/jd-phone.png" alt="">
+                <p>冰箱</p>
+            </div>
+            <div>
+                <img src="images/jd-phone.png" alt="">
+                <p>电脑</p>
+            </div>
+            <div>
+                <img src="images/jd-phone.png" alt="">
+                <p>手机</p>
+            </div>
+            <div>
+                <img src="images/jd-phone.png" alt="">
+                <p>空调</p>
+            </div>
+            <div>
+                <img src="images/jd-phone.png" alt="">
+                <p>冰箱</p>
+            </div>
+            <div>
+                <img src="images/jd-phone.png" alt="">
+                <p>电脑</p>
+            </div>
+            <div>
+                <img src="images/jd-phone.png" alt="">
+                <p>手机</p>
+            </div>
+        </div>
+    </section>
+    <footer></footer>
+</body>
+</html>

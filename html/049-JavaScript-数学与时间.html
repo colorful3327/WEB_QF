@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* 广告弹出层 
+        分析:
+            1. 打开页面的时候不显示
+               => box 盒子默认隐藏
+            2. 过会儿显示
+               => setTimeout() 
+            3. 点击 X 按钮，关闭
+               => box 再隐藏
+        */
+        /* div {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            border: 1px solid violet;
+            display: none;
+        }
+        */
+
+        /* 秒杀 */
+        /* *{margin: 0; padding: 0;}
+        h1 {
+            text-align: center;
+        }
+        .box {
+            width: 300px;
+            height: 40px;
+            padding: 20px;
+            border: 2px solid gray;
+            margin: 50px auto;
+            line-height: 40px;
+            text-align: center;
+        }
+        .box > p {
+            display: inline-block;
+            line-height: 40px;
+            width: 49px;
+            background-color: skyblue;
+            font-size: 30px;
+        } */
+    </style>
+</head>
+<body>
+    <script src="./utils.js"></script>
+    <!-- 格式化时间 -->
+    <script>
+        /*
+        把时间格式化为中文模式
+        分析
+        1. 准备个数组
+            * 把汉字准备好
+        2. 获取当前的时间节点
+        3. 把时间对象里面的信息一个个整出来
+        4. 转汉字
+            * 根据读法 分类: 年 其他
+            * 年 二零二二
+            * 其他 几、十几、几十、几十几
+            * 先判断数字去哪个范围
+        5. 组装
+        */
+        // var time = new Date()
+        // var arr = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十']
+        // var year = time.getFullYear()
+        // var month = time.getMonth() + 1
+        // var date = time.getDate()
+        // var hours = time.getHours()
+        // var minutes = time.getMinutes()
+        // var seconds = time.getSeconds()
+        // var week = time.getDay()
+
+        // function forgetYear(year) {
+        //     var a = parseInt(year / 1000) 
+        //     var b = parseInt(year % 1000 / 100)
+        //     var c = parseInt(year % 100 / 10)
+        //     var d = year % 10
+        //     return arr[a] + arr[b] + arr[c] + arr[d] + '年'
+        // }
+        // function forgetNum(num) {
+        //     var a = parseInt(num / 10)
+        //     var b = num % 10
+        //     if (num <10) {
+        //         return arr[num]
+        //     } else if (num < 20) {
+        //         return '十' + arr[b]
+        //     } else if (num % 10 === 0) {
+        //         return arr[a] + '十'
+        //     } else {
+        //         return arr[a] + '十' + arr[b]
+        //     }
+        // }
+        // var str = forgetYear(year) + ' ' + 
+        //           forgetNum(month) + '月' + 
+        //           forgetNum(date) + '日 ' + 
+        //           forgetNum(hours) + '时' + 
+        //           forgetNum(minutes) + '分'+ 
+        //           forgetNum(seconds) + '秒'+ ' 周' + 
+        //           forgetNum(week)
+        // console.log(str)
+    </script> 
+    <!-- 秒杀 -->
+    <!-- <h1>距离出去浪^_^</h1>
+    <div class="box">
+        <p id="daysBox">xx</p> 天
+        <p id="hoursBox">xx</p> 时
+        <p id="minutesBox">xx</p> 分
+        <p id="secondsBox">xx</p> 秒
+    </div>
+    <script>
+        /* 秒杀
+        1. 布局
+        2. 出现一个定时器
+            * 每一秒换一次内容
+            * setInterval() 1000
+            * 每秒算一次时间差
+            * 获取时间节点
+                定时器内 or 外
+                当前时间: 每隔一秒需要重新获取一次
+                目标时间: 永远都是一个时间
+        3. 把对应的时间填充到对应的 p 标签中
+            * 元素.innerText = 值
+        4. 出现问题
+            * 刚打开页面不对劲 要等一秒才出现
+            * 解决: 打开页面就执行一遍
+                * 函数写成具名的
+        */
+        var target = new Date(2022, 11, 31, 6, 11, 21)
+        function daojishi() {
+            var time = new Date()
+            var diff = getTimeDifference(target, time)
+
+            if (diff.days < 10) diff.days = '0' + diff.days
+            if (diff.hours < 10) diff.hours = '0' + diff.hours
+            if (diff.minutes < 10) diff.minutes = '0' + diff.minutes
+            if (diff.seconds < 10) diff.seconds = '0' + diff.seconds
+
+            daysBox.innerText = diff.days
+            hoursBox.innerText = diff.hours
+            minutesBox.innerText = diff.minutes
+            secondsBox.innerText = diff.seconds
+        }
+        daojishi()
+        setInterval(daojishi, 1000)
+    </script> -->
+
+
+
+    <!-- 广告弹出层 -->
+    <!-- <div id="box">
+        <button id="btn">X</button>
+    </div>
+    <script>
+        // 广告弹出层
+        setTimeout(function () {
+            box.style.display = 'block'
+        }, rangeRandom(999, 9999))
+        btn.onclick = function () {
+            box.style.display = 'none'
+            setTimeout(function () {
+                box.style.display = 'block'
+            }, rangeRandom(12949, 49129))
+            // setInterval(function () {
+            //     box.style.display = 'block'
+            // }, 1000)
+            // setInterval(function () {
+            //     box.style.display = 'none'
+            // }, 1209)
+        }
+    </script> -->
+
+
+    <script>
+        // 时间差
+        // var time1 = new Date()
+        // var time2 = new Date(2022, 5, 11, 14, 30, 21)
+        // console.log(time1)
+        // var res = getTimeDifference(time1, time2)
+        // console.log(res)  
+
+        // 随机整数
+        // console.log(rangeRandom(10, 20))
+        // var obj = {}    
+        // for (var i = 0; i < 11000; i++) {
+        //     var res = rangeRandom(10, 20)
+        //     if (obj[res]) {
+        //         obj[res]++
+        //     } else {
+        //         obj[res] = 1
+        //     }
+        // }
+        // console.log(obj)
+
+        // 随机颜色
+        // console.log(randomColor(1))
+        // console.log(randomColor())
+
+        
+    </script>
+    
+
+</body>
+</html>

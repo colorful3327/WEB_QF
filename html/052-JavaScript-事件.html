@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        body {
+            width: 1200px;
+            height: 1200px;
+        }
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            margin: 50px;
+        }
+        div > p {
+            width: 49px;
+            height: 11px;
+            background-color: violet;
+        }
+    </style>
+</head>
+<body>
+    <!-- 事件 -->
+    <div>
+        <p></p>
+    </div>
+    <button>解绑</button>
+    <script src="./utils.js"></script>
+    <script>
+        var div = document.querySelector('div')
+        var btn = document.querySelector('button')
+        // div.addEventListener('click', function () { console.log('我被点击了~') })
+        function clickHandler() {
+            console.log('我被点击了')
+        }
+        on(div, 'mousedown', function(e) {
+            e = e || window.event
+            console.log('colorful', e)
+            console.log('clientX', e.clientX)
+            console.log('clientY', e.clientY)
+        })
+
+
+        // 1. 
+        // div.addEventListener('click', clickHandler)
+        // btn.onclick = function() {
+        //     div.removeEventListener('click', clickHandler)
+        // }
+
+        // function on (ele, type, handler) {
+        //     if (!ele) throw new Error('请按照规则传递参数')
+        //     if (ele.nodeType !== 1) throw new Error('事件源有问题')
+        //     if (ele.addEventListener) {
+        //         ele.addEventListener(type, handler)
+        //     } else if (ele.attachEvent) {
+        //         ele.attachEvent('on' + type, handler)
+        //     } else {
+        //         ele['on' + type] = handler
+        //     }
+        // }
+        // function off (ele, type, handler) {
+        //     if (!ele) throw new Error('请按照规则传递参数')
+        //     if (ele.nodeType !== 1) throw new Error('事件源有问题')
+        //     if (ele.removeEventListener) {
+        //         ele.removeEventListener(type, handler)
+        //     } else if (ele.detachEvent) {
+        //         ele.detachEvent('on' + type, handler)
+        //     } else {
+        //         ele['on' + type] = null
+        //     }
+        // }
+        // on(div, 'click', clickHandler)
+        // on(div, 'click', function (e) { console.log('colorful', e) })
+        // on(btn, 'click', function () {
+        //     off(div, 'click', clickHandler)
+        // })
+    </script>
+</body>
+</html>

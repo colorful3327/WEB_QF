@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var str = 'colorful-3327'
+        // console.log(str.split('-'))
+        // // ['colorful', '3327']
+
+
+        // 反转字符串
+        // 方案一
+        // split()变成数组，reverse()反转数组，join()拼接起来
+        // var str = 'colorful3327'
+        // var res = str.split('').reverse().join()
+        // console.log(res)
+
+
+        // 方案二
+        // var str = 'colorful3327'
+        // var newStr = ''
+        // for (var i = str.length - 1; i >= 0; i--) {
+        //     newStr += str[i]
+        // }
+        // console.log(newStr)
+
+
+
+        // 关键字隐藏
+        //  方案一
+        // var str = 'qwewqdasdMMasdaMMasdqwdMMqwqwMM'
+        // while (str.indexOf('MM') !== -1) {
+        //     str = str.replace('MM', '**')
+        // }
+        // console.log(str)
+
+        // 方案二
+        // var str = 'wdwMMsadkoqoMMpewopqf<>?MM'
+        // str = str.split('MM').join('**')
+        // console.log(str)
+
+
+        // 字符串计数
+        // 方案一
+        // 计数排序的思路 但是有限制 索引和数据都是数字
+        // 来 对象数据类型 key: value 即 字符: 出现次数
+        // 循环遍历字符串
+        // var str = 'qwejijdnasd'
+        // var obj = {}
+        // for (var i = 0; i < str.length; i++) {
+        //     var s = str[i]
+        //     if (obj[s]) {
+        //         obj[s]++
+        //     } else {
+        //         obj[s] = 1  
+        //     }
+        // }
+        // // console.log(obj)
+        // // 又要求 把出现次数最多的都找出来
+        // var maxStr = ''
+        // var maxNum = 0  // 假设最多出现零次
+        // for (var key in obj) {
+        //     if (obj[key] === maxNum) {
+        //         maxStr += key
+        //     }
+        //     if (obj[key] > maxNum) {
+        //         maxNum = obj[key]
+        //         maxStr = key
+        //     }
+        // }
+        // console.log(maxStr)
+
+
+
+        // 基础练习
+        var str1 = 'colorful'
+        var str2 = new String('3327')
+        console.log(str1.length)
+        console.log(str2[3])
+        var str3 = `
+1        colorful-3327
+        test`
+        console.log(str3)
+        console.log(str1.charAt(0))
+        console.log(str1.charCodeAt(0))
+        console.log(str3.replace('3327', '1209'))
+        console.log(str1.concat(str2))
+        console.log((str1 + str2).split('o'))
+        console.log(str3.trim())
+        console.log(str3.startsWith(' '))
+        console.log(str3.startsWith(''))
+        console.log(str3.startsWith('1'))
+        console.log(str3.startsWith(`
+`))
+        console.log(str1.padStart(10, '0409'))
+
+
+
+
+
+        // 作业 通过数据渲染一个表格
+        // 1. 搭建静态页面
+        var userList = [
+            { name: 'Jack', age: 18, gender: '男'},
+            { name: 'Tom',  age: 11, gender: '男'},
+            { name: 'Rose', age: 17, gender: '女'}
+        ]
+        // 2. 循环遍历数组
+        // 根据数据生成HTML结构 数组里面每个对象对应结构上的一个tr
+        // for () {}
+        // forEach()
+        str = `
+        <table>
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+            `
+
+        // 循环就是为了生成tr标签
+        userList.forEach(function (item, index) {
+            str +=  `
+            <tr>
+                <td>${ index + 1 }</td>
+                <td>${ item.name }</td>
+                <td>${ item.age }</td>
+                <td>${ item.gender }</td>
+                <td>
+                    <button>编辑</button>
+                    <button>删除</button>
+                </td>
+            </tr>
+                    `
+        })
+           
+        str += `
+            </tbody>
+        </table>
+        `
+        document.write(str)
+
+        /* 来说说动态创建页面结构的优缺点
+        * 优点: 
+        * 实时根据数据渲染页面
+        * 当发生变化的时候，不需要刷新页面，直接进行二次渲染，用户体验很好
+        * 缺点:
+        * 源代码没有对应的结构，搜索引擎搜索不到
+        */
+        
+    </script>
+    <!-- ↓ 一开始写的静态模板 -->
+    <!-- <table>
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Jack</td>
+                <td>18</td>
+                <td>男</td>
+                <td>
+                    <button>编辑</button>
+                    <button>删除</button>
+                </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Jack</td>
+                <td>18</td>
+                <td>男</td>
+                <td>
+                    <button>编辑</button>
+                    <button>删除</button>
+                </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Jack</td>
+                <td>18</td>
+                <td>男</td>
+                <td>
+                    <button>编辑</button>
+                    <button>删除</button>
+                </td>
+            </tr>
+        </tbody>
+    </table> -->
+</body>
+</html>

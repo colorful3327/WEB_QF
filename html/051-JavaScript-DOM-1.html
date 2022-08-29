@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- <style>
+        div {
+            width: 129px;
+            height: 129px;
+            background-color: violet;
+        }
+        div.box {
+            background-color: skyblue;
+        }
+    </style> -->
+
+    <!-- <style>
+        /* 全选 */
+        *{margin: 0;padding: 0;}
+        .box {
+            width: 160px;
+            padding: 5px;
+            border: 2px solid violet;
+            margin: 129px auto;
+        }
+        .box div{
+            padding: 9px;
+        }
+    </style> -->
+    <!-- <style>
+    /* 选项卡 */
+
+    </style> -->
+
+    <!-- 作业-回到顶部 -->
+    <!-- <style>
+        *{margin: 0;padding: 0;}
+        body {
+            height: 3000px;
+        }
+        .topBar {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: #fff;
+            background-color: skyblue;
+            position: fixed;
+            font-size: 30px;
+            left: 0;
+            top: 0;
+
+            display: none;
+        }
+        .topBar.active {
+            display: block;
+        }
+        .goTop {
+            width: 50px;
+            height: 50px;
+            line-height: 25px;
+            text-align: center;
+            font-size: 20px;
+            color: #fff;
+            background-color: violet;
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+
+            display: none;
+        }
+        .goTop.active {
+            display: block;
+        }
+    </style> -->
+
+    <style>
+        /* 带有添加、删除功能的表格 */
+        *{margin: 0;padding: 0;}
+        form {
+            width: 300px;
+            padding: 20px;
+            border: 9px solid skyblue;
+            margin: 10px;
+        }
+        form > button {
+            width: 100%;
+            height: 30px;
+            margin: 10px 0;
+        }
+        table {
+            width: 300px;
+            margin: 30px;
+            border: 2px solid violet;
+            text-align: center;
+            /* color: #fff; */
+        }
+        table > tbody tr:nth-child(odd) {
+            background-color: #ccc;
+        }
+        table > tbody > tr:nth-child(even) {
+            background-color: orange;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- 带有添加、删除功能的表格 -->
+    <form action="">
+        姓名: <input type="text" class="username"><br>
+        年龄: <input type="text" class="userage"><br>
+        性别: <input type="text" class="usergender"><br>
+        <button class="add" type="button">添加</button>
+    </form>
+    <table cellspacing = "0">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>张三</td>
+                <td>18</td>
+                <td>男</td>
+                <td>
+                    <button class="del">删除</button>
+                </td>
+            </tr>
+            <tr>
+                <td>李四</td>
+                <td>19</td>
+                <td>??</td>
+                <td>
+                    <button class="del">删除</button>
+                </td>
+            </tr>
+            <tr>
+                <td>王二麻子</td>
+                <td>23</td>
+                <td>男</td>
+                <td>
+                    <button class="del">删除</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        /**
+        * 带有添加、删除功能的表格
+        * 1. 分析
+        * 添加
+            * 拿到文本框的内容，组装一个 tr 标签出来，插入到 tbody 里面 
+        * 删除
+            * 找到所在的 tr，移除
+        * 2. 代码实现
+        * 获取元素
+            * 添加按钮、三个文本框、tbody标签、每个删除按钮
+        * 添加
+            * 添加按钮绑定点击事件
+            * 获取三个文本框里的内容
+                * 元素.value
+            * 表单验证
+                * 非空验证。空的我就不插入
+            * 创建一个节点
+                * tr 节点
+                * tr 节点里面有一系列子节点
+            * 表单置空
+        * 删除
+            * 循环遍历 dels，并添加点击事件
+            * 找到当前点击的这个删除按钮
+                * this 谁身上的事件，this 就是谁
+            * 找到删除按钮所属 tr，即 父之父
+            * 删除
+        */
+        var nameInp = document.querySelector('.username')
+        var ageInp = document.querySelector('.userage')
+        var genderInp = document.querySelector('.usergender')
+        var addBtn = document.querySelector('.add')
+        var tbody = document.querySelector('tbody')
+        var dels = document.querySelectorAll('.del')
+
+        addBtn.onclick = function () {
+            var username = nameInp.value
+            var age = ageInp.value
+            var gender = genderInp.value
+            if (username === '' || age === '' || gender === '') {
+                alert('Please 完整 write 表单!~')
+                return
+            }
+            var tr = document.createElement('tr')
+            var td1 = document.createElement('td')
+            var td2 = document.createElement('td')
+            var td3 = document.createElement('td')
+            var td4 = document.createElement('td')
+            var button= document.createElement('button')
+
+            td1.innerHTML = username
+            td2.innerHTML = age
+            td3.innerHTML = gender
+            button.innerHTML = '删除'
+
+            button.onclick = function () {
+                // 执行删除操作
+            }
+
+            tr.appendChild(td1)
+            tr.appendChild(td2)
+            tr.appendChild(td3)
+            tr.appendChild(td4)
+            td4.appendChild(button)
+
+            tbody.appendChild(tr)
+
+            nameInp.value = ''
+            ageInp.value = ''
+            genderInp.value = ''
+        }
+        dels.forEach(function (item) {
+            item.onclick = function () {
+                // console.log(this)
+                var tr = this.parentElement.parentElement
+                tr.remove()
+            }
+        })
+    </script>
+
+    <!-- <div class = 'box'> -->
+        <!-- 把创建的节点插入到这个 div 里面 -->
+        <!-- <p>我是 div 自带的 p 标签</p> -->
+        <!-- <p>我是 div 自带的 p 标签-2</p> -->
+    <!-- </div> -->
+<!-- 
+    <script>
+        var div = document.querySelector('div')
+        var p = document.querySelector('p')
+        // var p = document.querySelectorAll('p')
+
+        var span = document.createElement('span')
+        var h1 = document.createElement('h1')
+        span.innerHTML = '我是新来的 span 节点'
+        // 1. 
+        // console.log(span)
+        // h1.appendChild(span)
+        // div.appendChild(h1)
+        // 2. 
+        // h1.appendChild(span)
+        div.insertBefore(h1, p)
+        // div.insertBefore(span, p)
+        // 3.
+        // div.removeChild(p)
+        // for (i = 0; i < p.length; i++) {
+        //     div.removeChild(p[i])
+        // }
+        div.replaceChild(span, p)
+    </script> -->
+
+
+    <!-- <div class="box" id="container">
+        我是注释
+        <p>段落</p>
+        俺是文本
+    </div>
+
+    <script>
+        var div = document.querySelector('div') // 元素节点
+        var attr = div.attributes[0]            // 属性节点
+        var text = div.childNodes[4]            // 文本节点
+        var comment = div.childNodes[1]         // 注释节点
+
+        var newtext = document.createTextNode(`   0
+        1 sasa
+        2 dsdas`)
+
+        console.log(newtext)
+        console.log(typeof newtext)
+
+        // console.log('元素节点', div.nodeType) 
+        // console.log('属性节点', attr.nodeType)
+        // console.log('文本节点', text.nodeType)
+        // console.log('注释节点', comment.nodeType)
+
+        // console.log('元素节点', div.nodeName) 
+        // console.log('属性节点', attr.nodeName)
+        // console.log('文本节点', text.nodeName)
+        // console.log('注释节点', comment.nodeName)
+
+        // console.log('元素节点', div.nodeValue) 
+        // console.log('属性节点', attr.nodeValue)
+        // console.log('文本节点', text.nodeValue)
+        // console.log('注释节点', comment.nodeValue)
+    </script> -->
+
+
+    <!-- <p>我是 div 上面的 p 标签</p>
+    <div class="box" id="box">
+
+        hello
+        , 
+        <p>p - 你好</p>
+        世界~
+        <p>p - world~</p>
+    
+    </div>
+    <p>我是 div 下面的 p 标签</p>
+    <script>
+        var div = document.querySelector('div')
+
+        var parent = div.parentNode.parentNode.parentNode
+        console.log(parent)
+        var attr = div.attributes
+        console.log(attr)
+
+        // var child = div.childNodes
+        // console.log('childNodes', child)
+        // var childEle = div.children
+        // console.log('children', childEle)
+        // var first = div.firstChild
+        // console.log('firstChild', first)
+        // var firstEle = div.firstElementChild
+        // console.log('firstElementChild', firstEle)
+    </script> -->
+
+
+
+    <!-- <div style="width: 100px; border: 1px solid violet;">盒盒盒</div>
+    <script>
+        var div = document.querySelector('div')
+        // console.log(div.style)
+        console.log(div.style.border)
+        /* 
+        自己兼容
+        准备个函数，接收俩参数
+        函数内处理兼容
+            为啥报错? 没有
+            判断 window 里有没有
+        */
+        function getStyle(ele, style) {
+            if ('getComputedStyle' in window) {
+                return window.getComputedStyle(ele)[style]
+            } else {
+                return ele.currentStyle[style]
+            }
+        }
+    </script> -->
+
+
+
+    <!-- 
+        作业-回到顶部 
+        代码实现
+        1. 获取元素
+            顶部通栏 回到顶部按钮
+        2. 操作两个盒子显示/隐藏
+            使用 window.onscroll 事件
+            在事件里面随时获取浏览器卷去的高度
+            className  classList
+        3. 回到顶部按钮
+            按钮点击事件 scrollTo()
+    -->
+    <!-- <div class="topBar">顶部通栏</div>
+    <div class="goTop">回到顶部</div>
+    <script>
+        var topBar = document.querySelector('.topBar')
+        var goTop = document.querySelector('.goTop')
+        // console.log(topBar)
+        // console.log(goTop)
+
+        window.onscroll = function () {
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+            if (scrollTop >= 233) {
+                topBar.className = 'topBar active'
+                goTop.classList.add('active')
+            } else {
+                topBar.className = 'topBar'
+                goTop.classList.remove('active')
+            }
+        }
+        goTop.onclick = function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            })
+        }
+    </script> -->
+
+
+
+    <!-- 选项卡 (tab切换) 残缺了，详见P136-->
+    <!-- <script>
+        /*
+        分析
+        for循环出现问题
+            点击事件里面不知道你点击的是哪个 li
+            因为你点击的时候，循环已经结束，元素身上并没有和索引相关的内容
+            在事件处理函数里使用 this
+            谁身上的事件，this 就是谁
+        */
+        var btns = document.querySelector('ul > li')
+        var tabs = document.querySelector('ol > li')
+        // 先看这个循环
+        for (var i = 0; i < btn.length; i++) {
+            // 给每个 li 添加一个自定义属性 index
+            btns[i].setAttribute('index', i)
+            btns[i].onclick = function() {
+                // 让 btns 里面的每个 li 没有 active 类名
+                for (var j = 0; j < btns.length; j++) {
+                    btns[j].className = ''
+                    tabs[j].className = ''
+                }
+                // 让当前点击的这个 li 有 active 类名
+                this.className = 'active'
+                // 让 tabs 里面索引配套的那一个 li 有 active 类名
+                var index = this.getAttribute('index') - 0
+                tabs[index].className = 'active'
+            }
+        }
+        // 再看这个循环
+        btns.forEach(function fn(item, index) {
+            item.onclick = function () {
+                // 事件处理函数里面, item 就是你点击的这个 li
+                //                  index 就是你点击的这个 li的索引
+                tabs.forEach(function (t, i) {
+                    t.className = ''
+                    btns[i].className = ''
+                })
+                item.className = 'active'
+                tabs[index].className = 'active'
+            }
+        })
+    </script> -->
+
+
+
+    <!-- 全选 
+    业务逻辑分析
+        都选中了，全选自动选中
+        全选选中了，自动都选中
+        反之全选不中
+    代码
+    获取全选和每个  
+    全选按钮点击事件 获取他的checked 循环遍历每个item设置一样
+    每个
+        假设是，有未选 否定
+    -->
+    <!-- <div class="box">
+        <div class="all">
+            全选: <input type="checkbox"> 
+        </div>
+        <hr>
+        <div class="items">
+            选项一: <input type="checkbox"> <br>
+            选项二: <input type="checkbox"> <br>
+            选项三: <input type="checkbox"> <br>
+            选项四: <input type="checkbox"> <br>
+        </div>
+    </div>
+    <script>
+        var allBtn = document.querySelector('.all > input')
+        var itemBtns = document.querySelectorAll('.items > input')
+        console.log(itemBtns)
+        allBtn.onclick = function() {
+            var type = allBtn.checked
+            // console.log(type)
+            itemBtns.forEach(function(item) { item.checked = type })
+        }
+        itemBtns.forEach(function(item) {
+            item.onclick = function() {
+            var flag = true
+            for(i = 0; i < itemBtns.length; i++) {
+                if (!itemBtns[i].checked) {
+                    flag = false
+                    break
+                }
+            }
+            // itemBtns.forEach(function (item) {
+            //     if(!item.checked) flag = false
+            // })
+            allBtn.checked = flag
+            }
+        }) 
+    </script> -->
+
+    <!-- 练习 -->
+    <!-- <div id="box"></div>
+    <p id="a">外面</p>
+    <div id="box2">
+        <p id="a">里面</p>
+    </div>
+    <ul>
+        <li class="box">1</li>
+        <li class="box">2</li>
+        <li class="box">3</li>
+        <li class="box">4</li>
+        <li class="box">5</li>
+        <li class="box">6</li>
+        <li class="box">7</li>
+        <li class="box">8</li>
+        <li class="box">9</li>
+        <li class="box">10</li>
+    </ul>
+    <div id="box" class="box" style="color: red;"></div>
+    <div data-index="129">129</div>
+    <input data-a="100" type="text" name="" id="">
+
+    <script>
+        console.log('html', document.documentElement)
+        var abc = document.getElementById('box')
+        console.log('外面这个叫box的div', abc)
+        var bcd = document.getElementById('box2')
+        console.log('这个内部p标签外面的壳子',bcd)
+        // console.log(bcd.getElementById('a'))
+            // ↑ Uncaught TypeError: bcd.getElementById is not a function
+        console.log(document.getElementsByTagName('p'))
+        console.log(document.querySelector('ul > li:nth-child(3'))
+
+        var div = document.querySelector('div')
+        var str = div.dataset.index
+        var str = input.dataset.a
+        console.log(div.dataset.index)
+        console.log(str)
+        console.log(input.dataset.test) // error!
+        console.log(div.dataset)
+        console.log(document.querySelector('div').dataset.index)
+        div.dataset.end = '49'
+    </script> -->
+
+    <!-- 练习 -->
+    <!-- <div class="q w e r">我是 div 标签</div>
+    <button class="btn">切换</button>
+    <script>
+        // 0. 获取
+        var div = document.querySelector('div')
+        var btn = document.querySelector('.btn')
+
+        // 1. 设置
+        // div.className = "box"
+
+        // 2. H5
+        div.classList.add('gxk')
+        div.classList.remove('r')
+        btn.onclick = function() {
+            div.classList.toggle('box')
+        }
+        console.log(div.classList)
+    </script> -->
+</body>
+</html>

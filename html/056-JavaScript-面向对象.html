@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        // 工厂函数
+        function createObj(name, age, gender) {
+            let obj = {}
+            obj.name = name
+            obj.age = age
+            obj.gender = gender
+            return obj
+        }
+        // 使用
+        let o1 = createObj('Jack', 18, '男')
+        */
+        
+        function createObj(name, age, gender) {
+            this.name = name
+            this.age = age
+            this.gender = gender
+        } 
+        let o1 = new createObj('Jack', 18, '男')    // 本次调用 函数内部的this就指向o1
+
+    </script>
+</body>
+</html>

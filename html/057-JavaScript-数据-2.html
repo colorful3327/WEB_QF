@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="username">
+    <input type="text" id="txt">
+    <script>
+        let obj = {
+            name: 'Jack'
+        }
+        obj.age = 18
+        var prop = {
+            firstName: '张',
+            lastName: '思锐'
+        }
+        Object.defineProperty(obj, 'username', {
+            get (){
+                return  prop.lastName + prop.firstName
+            },
+            set (val) {
+                // console.log('你要修改成: ', val)
+                let a = val.slice(0, 1)
+                let b = val.slice(1)
+                prop.firstName = a
+                prop.lastName = b
+                let inp = document.querySelector('#username')
+                inp.value = obj.username
+            }
+        })
+        var inp = document.querySelector('#txt')
+        inp.addEventListener('input', () => {
+            obj.username = inp.value
+        })
+        obj.name = 'Rose'
+        obj.age = 20
+        obj.username = '张三'
+        // console.log(obj)
+        // for (let key in obj) {
+        //     console.log(key )
+        // }
+    </script>
+</body>
+</html>

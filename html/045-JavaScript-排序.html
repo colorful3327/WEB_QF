@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 冒泡排序
+        // 初版 待优化
+        // var arr = [3, 5, 8, 9, 1, 2, 4 ,7, 6]
+        // for (var i = 0; i < arr.length - 1; i++) {
+        //     for (var j = 0; j < arr.length; j++) {
+        //         if (arr[j] < arr[j + 1]) {
+        //             var tmp = arr[j]
+        //             arr[j] = arr[j + 1]
+        //             arr[j + 1] = tmp
+        //         }
+        //     }
+        // }
+        // console.log(arr)
+        // 优化
+        // 1. 内部循环 length 改为 length-1 
+        //  之前多比较了个最后一个数据和undefined(超出范围)
+        //  没意义
+        // 多少次 次数减少逐渐 内层循环再减个外层变量   
+        // var arr = [4, 14, 5, 3, 11, 15, 9, 1, 13, 2, 10, 8, 7, 12, 6]
+        // for (var i = 0; i < arr.length - 1; i++) {
+        //     for (var j = 0; j < arr.length - 1 - i; j++) {
+        //         if (arr[j] < arr[j + 1]) {
+        //             var tmp = arr[j]
+        //             arr[j] = arr[j + 1]
+        //             arr[j + 1] = tmp
+        //         }
+        //     }
+        // }
+        // console.log(arr)
+        // 口诀
+        // 双层for循环 一层减一次 里层减外层 变量相交换
+
+
+        // 计数排序 countSort()
+        // var arr = [1999, 2000, 49, 129, 2, 3, 9, 49, 129, 11]
+        // var tmpArr = []
+        // for (var i = 0; i < arr.length; i++) {
+        //     if (tmpArr[arr[i]] !== undefined) {
+        //         tmpArr[arr[i]]++
+        //     } else {
+        //         tmpArr[arr[i]] = 1
+        //     }
+        // }
+        // // console.log(tmpArr)
+        // arr.length = 0
+        // for (var i = 0; i < tmpArr.length; i++) {
+        //     if (tmpArr[i] === undefined) continue
+        //     // console.log('这里有' + tmpArr[i] + '个' + i)
+        //     // 搞清楚 tmpArr[i] 和 i 代表什么
+        //     for (var j = 1; j <= tmpArr[i]; j++) {
+        //         // 这些要排序的 最少一个 最多就tmpArr[i]个
+        //         arr[arr.length] = i
+        //         // length从一开始 索引从零开始
+        //     }
+        // }
+        // console.log(arr)
+
+
+        // 选择排序
+        // var arr = [9, 3, 6, 8, 2, 4, 7, 5, 1]
+        // for (var j = 0; j < arr.length - 1; j++) {
+        //     // 这个循环是说总共排序多少轮
+        //     var minIndex = j
+        //     // 假设最小索引 就是起头嘛 
+        //     for (var i = j + 1; i < arr.length; i++) {
+        //         // 这个比较的开头比假设最小往后一个 省去自己比较自己
+        //         if (arr[i] < arr[minIndex]) minIndex = i
+        //     }
+        //     var tmp = arr[j]
+        //     arr[j] = arr[minIndex]
+        //     arr[minIndex] = tmp
+        // }
+        // console.log(arr)
+
+
+
+        // 排序作业
+        // 1. 写函数 判断数组内是否有某个数据
+        // function has(arr, num) {
+        //     var flag = false
+        //     // 来这种假设模式
+        //     for (var i = 0; i < arr.length; i++) {
+        //         if (arr[i] === num) {
+        //             flag = true     // 若有 就推翻假设
+        //             break   // 记得break 切记
+        //         }
+        //     }
+        //     console.log(flag)
+        // }
+        // var arr = [1, 21, 3, 129, 4, 5, 8, 9, 34, 45]
+        // has(arr, 49)
+
+
+        // 2. 原数组每个值扩大30% 返回新数组
+        // function map(arr) {
+        //     var tmpArr = []
+        //     for (var i = 0; i < arr.length; i++) {
+        //         tmpArr[i] = arr[i] * 1.3
+        //     }
+        //     return tmpArr
+        // }
+        // console.log(map([1, 20, 300]))
+
+
+
+        // 3. 3-1来个数组 长度30 里面是从2开始的偶数
+        //    3-2每五个求个平均值放入新数组
+
+        // 3-1.1
+        // var arr = new Array(30)
+        // for (var i = 0; i < arr.length; i++) {
+        //     arr[i] = (i + 1) * 2
+        // }
+        
+        // 3-1.2
+        // var arr = []
+        // for (i = 2; i <= 60; i += 2) {
+        //     arr[arr.length] = i
+        // }
+
+        // 3-1.3
+        // var arr = []
+        // var i = 2
+        // while(arr.length < 30) {
+        //     arr[arr.length] = i
+        //     i += 2
+        // }
+
+        // console.log(arr)
+
+        // 3-2.1
+        // var newArr = []
+        // var sum = 0 
+        // var count = 0
+        // for (var i = 0; i < arr.length; i++) {
+        //     sum += arr[i]
+        //     count++
+        //     if (count % 5 === 0) {
+        //         newArr[newArr.length] = sum / 5
+        //         sum = 0
+        //     }
+        // }
+
+        // 3-2.2
+        // var newArr = []
+        // var sum = 0
+        // for (var i = 0; i < arr.length; i++) {
+        //     sum += arr[i]
+        //     if ((i + 1) % 5 === 0) {
+        //         newArr[newArr.length] = sum / 5
+        //         sum = 0     // 记得 sum 要从新开始
+        //     }
+        // }
+
+        // console.log(newArr)
+
+
+        
+
+    </script>
+</body>
+</html>

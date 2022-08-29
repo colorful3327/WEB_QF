@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <style>
+        *{margin: 0;padding: 0;}
+        div {
+            width: 300px;
+            height: 3000px;
+            padding: 20px;
+            border: 20px solid violet;
+            margin: 20px;
+        }
+        p {
+            width: 129px;
+            height: 49px;
+            background-color: skyblue;
+        }
+    </style> -->
+
+    <style>
+        *{margin: 0;padding: 0;}
+        ul, ol, li {
+            list-style: none;
+        }
+        ul {
+            width: 100%;
+            height: 60px;
+            text-align: center;
+            overflow: hidden;
+        }
+        ul > li {
+            line-height: 60px;
+            float: left;
+            width: 200px;
+            cursor: pointer;
+            background-color: orange;
+            font-size: 30px;
+        }
+        ol {
+            width: 100%;
+
+        }
+        div {
+            width: 100%;
+            height: 230px;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+        }
+        div > ol {
+            width: 1226px;
+            height: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        div > ol > li {
+            width: calc(100% / 6);
+            float: left;
+            height: 100%;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- 各种渲染 -->
+    <ul>
+        <li>第1个</li>
+        <li>第2个</li>
+        <li>第3个</li>
+        <li>第4个</li>
+        <li>第5个</li>
+        <li>第6个</li>
+        <li>第7个</li>
+    </ul>
+    <div>
+        <ol>
+            <li>
+                <img src="./images/grid-3.png" alt="">
+                <p>手机</p>
+                <p>价格</p>
+            </li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ol>
+    </div>
+    <!-- 
+        二级渲染菜单
+        分析数据结构
+          [
+            {
+                标题: 小米手机
+                list: [
+                    {
+                        图片,
+                        描述,
+                        价格    
+                    }
+                    {
+                        图片,
+                        描述,
+                        价格    
+                    }
+                ]
+            },
+            {
+                标题: 红米手机
+                list: [
+                    {
+                        图片,
+                        描述,
+                        价格    
+                    }
+                    {
+                        图片,
+                        描述,
+                        价格    
+                    }
+                ]
+            },
+          ]
+     -->
+
+
+    <!-- <div>
+        <p draggable="true">ppppp1</p>
+        <form action="">
+            <input type="text">
+            <button>提交</button>
+            <input type="reset">
+        </form>
+        <p>p22222</p>
+    </div>
+    <script>
+        var div = document.querySelector('div')
+        var p = document.querySelector('p')
+        var ipt = document.querySelector('input')
+        var form = document.querySelector('form')
+        // var width = div.offsetWidth
+        // console.log('offsetWidth', width)
+        // console.log('clientHeight', div.clientHeight)
+        console.log('offsetParent', p.offsetParent)
+        console.log('offsetTop', p.offsetTop)
+
+        console.log('BOM-width', window.innerWidth)
+        console.log('DOM-width', document.documentElement.clientWidth)
+        div.onmousemove = function () { console.log('鼠标移动') }
+        // div.onmousedown = function () { console.log('鼠标按下') }
+        // div.onclick = function () { console.log('鼠标单击') }
+        // ipt.onkeypress = function () { console.log('键盘按下 press') }
+        window.onoffline = function () { console.log('断网了') } 
+        ipt.oninput = function () { console.log('内容变了') }
+        form.onreset = function () { console.log('重置了表单内容') }
+    </script> -->
+
+    <!-- <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        /**
+        * 分析：
+        * 1. 循环遍历数组
+        * 2. 根据数组的次数去创建 tr
+        * 3. 填充 tr 内容
+        * 4. 插入到 tbody 里面
+        * 问题：
+        * 数据越多，操作 DOM 越多次
+        * 解决：
+        * 提前创建个 div 标签
+        * 把 tr 都放好了 再把 div 放到 tbody 里面
+        * 新问题：
+        * 文档碎片(筐)
+        */
+       var userList = [
+           { name: 'Tom', age: 18, gender: '男'},
+           { name: 'Jack', age: 19, gender: '男'},
+           { name: 'Rose', age: 22, gender: '女'}
+        ]
+        var tbody = document.querySelector('tbody')
+        // var div = document.createElement('div')
+        var frg = document.createDocumentFragment()
+        userList.forEach(function (item) {
+            var tr = document.createElement('tr')
+            tr.innerHTML = `
+                <td>${ item.name }</td>
+                <td>${ item.age }</td>
+                <td>${ item.gender }</td>
+            `
+            // div.appendChild(tr)
+            frg.appendChild(tr)
+        })
+        tbody.appendChild(frg)
+    </script> -->
+</body>
+</html>

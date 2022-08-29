@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{
+            width: 128px;
+            height: 214px;
+            background-image: url(images/steps.png);
+            margin: -20px -20px;
+            border: 5px solid violet;
+            box-sizing: border-box;
+
+            animation: runsteps 0.66s steps(1, end) infinite;   
+        }
+
+        @keyframes runsteps {
+            0%{
+                background-position: -128px 0;
+            }
+            14.3%{
+                background-position: -256px 0;
+            }
+            28.6%{
+                background-position: -384px 0;
+            }
+            42.9%%{
+                background-position: -512px 0;
+            }
+            57.2%{
+                background-position: -640px 0;
+            }
+            71.5%{
+                background-position: -640px 0;
+            }
+            85.8%{
+                background-position: -896px 0;
+            }
+            100%{
+                background-position: -1024px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 897 * 214 , 897/7=128-->
+    <div></div>
+</body>
+</html>

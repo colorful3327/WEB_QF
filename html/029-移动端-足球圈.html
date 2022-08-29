@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/font_3518132_7t6so95xtqq/iconfont.css">
+    <title>Document</title>
+
+    <style>
+        *{margin: 0;padding: 0;}
+        ul{list-style: none;}
+        :root, body{
+            height: 100%;
+        }
+
+        body{
+            display: flex;
+            flex-direction: column;
+        }
+
+        header{
+            height: 44px;
+            background-color: #0cc440;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        header div{
+            width: 60px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            font-size: 12px;
+        }
+        header div{
+            background-color: #63d985;
+            color: #a9e4b4;
+        }
+        header div:nth-child(1){
+            border-radius: 12px 0 0 12px;
+        }
+        header div:nth-child(2){
+            border-radius: 0 12px 12px 0;
+        }
+        header div:hover{
+            background-color: #3dd066;
+            color: white;
+        }
+
+        section{
+            flex: 1;
+            overflow: auto;
+        }
+        section ul{
+            display: flex;
+            position: sticky;
+            top: 0px;
+        }
+        section ul li{
+            flex: 1;
+            text-align: center;
+            height: 35px;
+            line-height: 35px;
+            border-bottom: 1px solid #d9d9d9;
+            color: #8c8c8c;
+            background-color: white;
+            font-size: 14px;
+        }
+        section ul li:hover{
+            border-bottom: 2px solid #08c63e;
+            color: #14bf4d;
+        }
+        section .list{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        section .list div{
+            width: 49%;
+            box-sizing: border-box;
+            border: 1px solid skyblue;
+            margin-top: 5px;
+        }
+        section .list div img{
+            width: 100%;
+        }
+        section .list div p{
+            height: 30px;
+            line-height: 30px;
+            font-size: 12px;
+            text-indent: 10px;
+        }
+
+
+        footer{
+            height: 44px;
+            background-color: white;
+        }
+        footer ul{
+            display: flex;
+            height: 100%;
+            justify-content: space-around;
+        }
+        footer ul li{
+            height: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+        footer li i{
+            height: 21px;
+            line-height: 21px;
+            font-size: 16px;
+        }
+        footer li p{
+            height: 17px;
+            line-height: 17px;
+            font-size: 12px;
+        }
+        footer li:nth-child(3){
+            position: relative;
+        }
+        footer li:nth-child(3) i{
+            width: 50px;
+            height: 50px;
+            border: 1px solid gray;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            margin-left: -25px;
+            top: -8px;
+            font-size: 30px;
+            text-align: center;
+            line-height: 50px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>热点</div>
+        <div>关注</div>
+    </header>
+
+    <section>
+        <ul>
+            <li>足球生活</li>
+            <li>足球新闻</li>
+            <li>足球美女</li>
+        </ul>
+
+        <div class="list">
+            <div>
+                <img src="images/windmill.png" alt="">
+                <p>蛤蛤蛤</p>
+            </div>
+            <div>
+                <img src="images/windmill.png" alt="">
+                <p>蛤蛤蛤</p>
+            </div>
+            <div>
+                <img src="images/windmill.png" alt="">
+                <p>蛤蛤蛤</p>
+            </div>
+            <div>
+                <img src="images/windmill.png" alt="">
+                <p>蛤蛤蛤</p>
+            </div>
+            <div>
+                <img src="images/windmill.png" alt="">
+                <p>蛤蛤蛤</p>
+            </div>
+            <div>
+                <img src="images/windmill.png" alt="">
+                <p>蛤蛤蛤</p>
+            </div>
+            <div>
+                <img src="images/windmill.png" alt="">
+                <p>蛤蛤蛤</p>
+            </div>
+            <div>
+                <img src="images/windmill.png" alt="">
+                <p>蛤蛤蛤</p>
+            </div>
+            <div>
+                <img src="images/windmill.png" alt="">
+                <p>蛤蛤蛤</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <ul>
+            <li>
+                <i class="iconfont icon-me"></i>
+                <p>我的</p>
+            </li>
+            <li>
+                <i class="iconfont icon-me"></i>
+                <p>你的</p>
+            </li>
+            <li>
+                <i class="iconfont icon-picture"></i>
+            </li>
+            <li>
+                <i class="iconfont icon-me"></i>
+                <p>好的</p>
+            </li>
+            <li>
+                <i class="iconfont icon-me"></i>
+                <p>行的</p>
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>

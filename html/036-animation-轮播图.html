@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{margin: 0;padding: 0;}
+        .swiper-container{
+            width: 490px;
+            height: 233px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        .swiper-container img{
+            width: 490px;
+            height: 233px;
+        }
+        .swiper-wrapper{
+            width: 2000px;
+            animation: swiperrun 8s linear infinite;
+        }
+        .swiper-wrapper:hover{
+            animation-play-state: paused;
+        }
+        .swiper-slide{
+            float: left;
+        }
+
+        @keyframes swiperrun {
+            0%{
+                transform: translate(0);
+            }
+            25%{
+                transform: translate(-490px);
+            }
+            33.33%{
+                transform: translate(-490px);
+            }
+            58.33%{
+                transform: translate(-980px);
+            }
+            66.66%{
+                transform: translate(-980px);
+            }
+            91.66%{
+                transform: translate(-1470px);
+            }
+            100%{
+                transform: translate(-1470px);
+            }
+        }   
+    </style>
+</head>
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="images/bg.png" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="images/feiman.png" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="images/feiman2.png" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="images/bg.png" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

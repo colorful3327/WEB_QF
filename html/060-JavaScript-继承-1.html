@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function Person(name, age) {
+            this.name = name
+            this.age = age
+        }
+        Person.prototype.sayHi = function () { console.log('Hello World~') }
+
+        function Student(gender, name, age) {
+            this.gender = gender
+            // 借用继承 继承来了父亲的属性
+            Person.call(this, name, age)
+        }
+
+        // 自执行函数 保护私有变量不污染全局
+        (function () {
+            // 第三方构造函数
+            function Abc(name, age) {}
+            // 原型继承
+            // 让第三方构造函数来继承父类的原型
+            Abc.prototype = Person.prototype
+            const a = new Abc()
+            Student.prototype = a
+        })()
+        const s = new Student('男', 'Jack', 18)
+        console.log(s)
+    </script>
+</body>
+
+</html>

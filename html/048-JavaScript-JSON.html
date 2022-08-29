@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            name: 'Jack',
+            age: 18,
+            gender: '男', 
+            fn: function() {}, // 这里最后有逗号没事儿 有函数也没事儿 都会过滤
+        }
+        // console.log(obj)
+        // console.log(JSON.stringify(obj))
+        // console.log(JSON.parse(JSON.stringify(obj)))
+
+        var jsonStr = `[{"name": "Tom", "age": 12, "gender": "男"}, 
+                       {"name": "Rose", "age": 17, "gender": "女"}]`
+        // console.log(JSON.parse(jsonStr))
+        localStorage.setItem('name', 'colorful')
+        localStorage.setItem('obj', JSON.stringify(obj))
+        localStorage.setItem('jsonStr', jsonStr)
+
+        console.log(JSON.parse(localStorage.getItem('obj')))
+        console.log(localStorage.getItem('obj'))
+        localStorage.removeItem('obj')
+        localStorage.clear()
+
+
+        var time = new Date()
+        var utcMsec = time.getUTCMilliseconds(time)
+        console.log(utcMsec)
+
+
+
+
+    </script>
+</body>
+</html>

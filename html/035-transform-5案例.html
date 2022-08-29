@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .box{
+            width: 350px;
+            border: 2px dashed violet;
+            /* margin: 0 auto; */
+            position: relative;
+            overflow: hidden;
+        }
+        img{
+            width: 100%;
+            display: block;
+            transition: all 1s;
+        }
+        .box:hover img{
+            transform: translate(36px);
+            opacity: 0.66;
+        }
+        h2{
+            position: absolute;
+            left: 36px;
+            top: 10px;
+            color: white;
+            transition: all 0.7s 0.3s;
+        }
+        .box:hover h2{
+            /* left: 72px; */
+            transform: translate(36px);
+        }
+        .box p{
+            width: 100px;
+            position: absolute;
+            left: 36px;
+            color: white;
+            background-color: blue;
+            transition: all 0.6s;
+        }
+        .box .p1{
+            top: 60px;
+            transform: translateY(120px);
+        }
+        .box:hover .p1{
+            transform: translateY(0);
+        }
+        .box .p2{
+            top: 90px;
+            transform: translateX(-150px);
+        }
+        .box:hover .p2{
+            transform: translate(0);
+        } 
+        .box .p3{
+            top: 120px;
+            left: 355px;
+        }
+        .box:hover .p3{
+            transform: translate(-319px);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="images/feiman.png" alt="">
+        <h2>title</h2>
+        <p class="p1">1111</p>
+        <p class="p2">2222</p>
+        <p class="p3">3333</p>
+    </div>
+    <!-- <div >
+        <img src="" alt="">
+        <h3></h3>
+        <p></p>
+    </div> -->
+</body>
+</html>

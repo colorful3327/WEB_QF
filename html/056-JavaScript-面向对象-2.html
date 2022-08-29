@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面向对象选项卡</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        ul, ol, li {
+            list-style: none;
+        }
+        .box {
+            width: 600px;
+            height: 300px;
+            border: 10px solid #333;
+            margin: 50px auto;
+        }
+        .box > ul {
+            width: 100%;
+            height: 40px;
+            overflow: hidden;
+        }
+        .box > ul > li {
+            height: 100%;
+            width: 200px;
+            float: left;
+            text-align: center;
+            line-height: 40px;
+            font-size: 30px;
+            background-color: orange;
+            cursor: pointer;
+        }
+        .box > ul > li.active {
+            background-color: skyblue;
+        }
+        .box > ol {
+            height: 260px;
+            width: 100%;
+            position: relative;
+        }
+        .box > ol > li {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            line-height: 260px;
+            text-align: center;
+            background-color: skyblue;
+            font-size: 100px;
+            display: none;
+        }
+        .box > ol > li.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <ol>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ol>
+    </div>
+    <div class="box box2">
+        <ul>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <ol>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ol>
+    </div>
+
+    <script>
+        /**
+         * 1. 抽象内容
+         * 属性 btns
+         * 属性 tabs
+         * 方法 点击切换的方法
+         * 2. 书写构造函数
+         * 3. 在方法里面实现选项卡
+         * 循环绑定事件以后，this不再指向实例了
+         * 拿不到tabs和btns
+         * 解决方案1
+         *  提前保存
+         * 解决方案2
+         *  箭头函数 箭头函数没有this 它是外部作用域的this
+        */
+        function Tabs(ele, options = {}) {
+            this.ele = document.querySelector(ele)
+            this.btns = this.ele.querySelectorAll('ul > li')
+            this.tabs = this.ele.querySelectorAll('ol > li')
+            this.options = options
+
+            this.change()   // 这里 this 是当前实例
+        }
+        Tabs.prototype.change = function () {
+            this.btns.forEach((item, index) => {
+                item.addEventListener(this.options.type || 'click', () => {
+                    // this 是谁? 事件源: 就是你现在点击的这个 li
+                    // console.log(this) 
+                    this.btns.forEach((t, i) => {
+                        // console.log(t, i)
+                        t.className = ''
+                        this.tabs[i].className = ''
+                    })
+                    item.className = 'active'
+                    this.tabs[index].className = 'active'
+                })
+            })
+        }
+        // let test = new Tabs('.box')
+        // test.change()
+        new Tabs('.box')
+        new Tabs('.box2', { type : 'mouseover'})
+    </script>
+</body>
+</html>

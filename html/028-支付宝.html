@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/font_3518132_7t6so95xtqq/iconfont.css">
+    <style>
+
+        *{margin: 0;padding: 0;}
+
+        .box{
+            width: 955px;
+            height: 1420px;
+            margin: 0 auto;
+            background-color: skyblue;
+            display: flex;
+            flex-direction: column;
+        }
+        header{
+            height: 124px;
+            background-color: #232939;
+            display: flex;
+            color: white;
+        }
+        .icon-wallet, .icon-gift, .icon-picture, .icon-shezhi{
+            height: 124px;
+            width: 118px;
+            line-height: 124px;
+            text-align: center;
+            font-size: 48px;
+        }
+        header span{
+            flex: 1;
+            width: 118px;
+            line-height: 124px;
+            font-size: 40px;
+        }
+
+
+        section{
+            flex: 1;
+            background-color: #f4f5f9;
+        }
+        .main{
+            display: flex;
+            height: 278px;
+            background-color: rebeccapurple;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .main div{
+            height: 168px;
+            width: 120px;
+            /* background-color: palegreen; */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .icon-scan, .icon-pay, .icon-accountbook{
+            font-size: 108px;
+            text-align: center;
+            color: #fff;
+        }
+        .main div span{
+            text-align: center;
+            font-size: 36px;
+            color: white;
+        } 
+        
+        .list{
+            display: flex;
+            flex-wrap: wrap;
+            border-color: paleturquoise;
+        }
+        .list div{
+            width: 25%;
+            height: 208px;
+            border: 1px solid gray;
+            box-sizing: border-box;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .list div i{
+            height: 77px;
+            line-height: 77px;
+            font-size: 55px;
+            text-align: center;
+        }
+        .list div span{
+            height: 61px;
+            line-height: 61px;
+            text-align: center;
+            font-size: 36px;
+        }
+        .list div:nth-child(1) i{
+            color: orange;
+        }
+        .list div:nth-child(2) i{
+            color: darkblue;
+        }
+        .list div:nth-child(3) i{
+            color: firebrick;
+        }
+        .list div:nth-child(4) i{
+            color: indianred;
+        }
+        .list div:nth-child(5) i{
+            color: violet;
+        }
+        .list div:nth-child(6) i{
+            color: lawngreen;
+        }
+        .list div:nth-child(7) i{
+            color: saddlebrown;
+        }
+        .list div:nth-child(8) i{
+            color: olive;
+        }
+        .list div:nth-child(9) i{
+            color: aqua;
+        }
+        .list div:nth-child(10) i{
+            color: hotpink;
+        }
+        .list div:nth-child(11) i{
+            color: maroon;
+        }
+        .list div:nth-child(12) i{
+            color: chartreuse;
+        }
+        .pic{
+            margin-top: 10px;
+            padding: 0 235px;
+        }
+
+
+
+        footer{
+            height: 128px;
+            background-color: violet;
+            display: flex;
+        }
+        footer div{
+            flex: 1;
+            /* border: 1px solid khaki; */
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            background-color: gainsboro;
+            color:#232939;
+        }
+        footer div i{
+            height: 66px;
+            text-align: center;
+        }
+        .icon-me{
+            font-size: 56px;
+        }
+        footer div span{
+            height: 36px;
+            font-size: 28px;
+            text-align: center;
+        }
+        footer div:hover{
+            color: skyblue;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <header>
+            <i class="iconfont icon-wallet"></i>
+            <span>钱包</span>
+            <i class="iconfont icon-gift"></i>
+            <i class="iconfont icon-picture"></i>
+            <i class="iconfont icon-shezhi"></i>
+        </header>
+
+        <section>
+            <div class="main">
+                <div>
+                    <i class="iconfont icon-scan"></i>
+                    <span>扫一扫</span>
+                </div>
+                <div>
+                    <i class="iconfont icon-pay"></i>
+                    <span>收付款</span>
+                </div>
+                <div>
+                    <i class="iconfont icon-accountbook"></i>
+                    <span>账单</span>
+                </div>
+                <div>
+                    <i class="iconfont icon-accountbook"></i>
+                    <span>账单</span>
+                </div>
+            </div>
+
+            <div class="list">
+                <div>
+                    <i class="iconfont icon-bankcard"></i>
+                    <span>信用卡还款</span>
+                </div>
+                <div>
+                    <i class="iconfont icon-feiji"></i>
+                    <span>航空</span>
+                </div>
+                <div>
+                    <i class="iconfont icon-canyin"></i>
+                    <span>餐饮</span>
+                </div>
+                <div>
+                    <i class="iconfont icon-jianshen"></i>
+                    <span>健身</span>
+                </div>
+                <div>
+                    <i class="iconfont icon-card"></i>
+                    <span>卡券</span>
+                </div>
+                <div>
+                    <i class="iconfont icon-qintao"></i>
+                    <span>淘一淘</span>
+                </div>
+                <div>
+                    <i class="iconfont icon-calculator"></i>
+                    <span>计算</span>
+                </div>
+                <div>
+                    <i class="iconfont icon-feiji"></i>
+                    <span>航空</span>
+                </div>
+                <div>
+                    <i class="iconfont icon-movie"></i>
+                    <span>电影</span>
+                </div>
+                <div>
+                    <i class="iconfont icon-zhusu"></i>
+                    <span>住宿</span>
+                </div>
+                <div>
+                    <i class="iconfont icon-card"></i>
+                    <span>卡券</span>
+                </div>
+                <div>
+                    <i class="iconfont icon-home"></i>
+                    <span>居家</span>
+                </div>
+            </div>
+
+            <div class="pic">
+                <img src="images/feiman.png" alt="">
+            </div>
+        </section>
+
+        <footer>
+            <div>
+                <i class="iconfont icon-me"></i>
+                <span>你的</span>
+            </div>
+            <div>
+                <i class="iconfont icon-me"></i>
+                <span>我的</span>
+            </div>
+            <div>
+                <i class="iconfont icon-me"></i>
+                <span>咱的</span>
+            </div>
+            <div>
+                <i class="iconfont icon-me"></i>
+                <span>谁的</span>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="./utils.js"></script>
+    <script>
+        ajax({
+            url: 'asas',
+            data: {},
+            success: function(){console.log('xing')}
+        })
+        function ajax(options = {}) {
+            // options={} 为了保证你的options是个对象
+            if (!options.url) {
+                throw new Error('url为必填选项')
+            }
+            if (!(options.type == undefined || options.type.toUpperCase() === 'GET' || options.type.toUpperCase() === 'POST')) {
+                throw new Error('目前仅支持GET/POST, 请期待更新~')
+            }
+            if (!(options.async == undefined || typeof options.async === 'boolean')) {
+                throw new Error('async需要一个Boolean数据类型')
+            }
+            if (!(options.dataType == undefined || options.dataType === 'string' || options.dataType === 'json')) {
+                throw new Error('目前仅支持string和JSON格式解析, 请期待更新~')
+            }
+            if (!(options.data == undefined || typeof options.data === 'string' || Object.prototype.toString.call(options.data) === '[object Object]')) {
+                // typeof options.data === 'object'
+                throw new Error('data仅支持string和object数据类型')
+            }
+            if (!(options.success == undefined || typeof options.success === 'function')) {
+                throw new Error('success传递一个函数类型')
+            }
+            if (!(options.error == undefined || typeof options.error === 'function')) {
+                throw new Error('error传递一个函数类型')
+            }
+
+            var _default = {
+                url: options.url,
+                type: options.type || 'GET',
+                async: typeof options.async === 'boolean' ? options.async : true,
+                dataType: options.dataType || 'string',
+                data: options.data || '',
+                success: options.success || function () {},
+                error: options.error || function () {}
+            }
+
+            // 能来到这里 只能是 '' {}
+            if (typeof _default.data === 'object') {
+                var str = ''
+                for (var key in _default.data) {
+                    str += key + '=' + _default.data[key] + '&'
+                }
+                _default.data = str.slice(0, -1)
+            }
+
+            var xhr = creXhr()
+            if (_default.type.toUpperCase() === 'GET' && _default.data) {
+                _default.url += '?' + _default.data
+            }
+            xhr.open(_default.type, _default.url, _default.async)
+            xhr.onreadystatechange = function () {
+                if (xhr.status >= 200 && xhr.status < 300 && xhr.readyState === 4) {
+                    if (_default.dataType === 'json') {
+                        _default.success(JSON.parse(xhr.responseText))
+                    } else if (_default.dataType === 'string') {
+                        _default.success(xhr.responseText)
+                    }
+                }
+                if (xhr.status >= 400 && xhr.readyState === 4) {
+                    _default.error('请求失败了', xhr.status)
+                }
+            }
+            if (_default.type.toUpperCase() === 'POST') {
+                xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded')
+            }
+            xhr.send(_default.data)
+        }
+
+        // var xhr = new XMLHttpRequest()
+        
+        // xhr.open('GET', './server/get.php', true)
+
+        // xhr.onload = function () {
+        //     console.log(JSON.parse(xhr.responseText))
+        //     console.log(xhr.responseText)
+        // }
+        // xhr.send()
+    </script>
+</body>
+</html>

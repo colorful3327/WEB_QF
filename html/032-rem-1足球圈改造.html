@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/font_3518132_7t6so95xtqq/iconfont.css">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        :root,
+        body {
+            height: 100%;
+        }
+
+        html{
+            font-size: 20px;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            height: 2.2rem;
+            background-color: #0cc440;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header div {
+            width: 3rem;
+            height: 1.25rem;
+            line-height: 1.25rem;
+            text-align: center;
+            font-size: .6rem;
+        }
+
+        header div {
+            background-color: #63d985;
+            color: #a9e4b4;
+        }
+
+        header div:nth-child(1) {
+            border-radius: .6rem 0 0 .6rem;
+        }
+
+        header div:nth-child(2) {
+            border-radius: 0 .6rem .6rem 0;
+        }
+
+        header div:hover {
+            background-color: #3dd066;
+            color: white;
+        }
+
+        section {
+            flex: 1;
+            overflow: auto;
+        }
+
+        section ul {
+            display: flex;
+            position: sticky;
+            top: 0rem;
+        }
+
+        section ul li {
+            flex: 1;
+            text-align: center;
+            height: 1.75rem;
+            line-height: 1.75rem;
+            border-bottom: .05rem solid #d9d9d9;
+            color: #8c8c8c;
+            background-color: white;
+            font-size: .7rem;
+        }
+
+        section ul li:hover {
+            border-bottom: .1rem solid #08c63e;
+            color: #14bf4d;
+        }
+
+        section .list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        section .list div {
+            width: 49%;
+            box-sizing: border-box;
+            border: .05rem solid skyblue;
+            margin-top: .25rem;
+        }
+
+        section .list div img {
+            width: 100%;
+        }
+
+        section .list div p {
+            height: 1.5rem;
+            line-height: 1.5rem;
+            font-size: .6rem;
+            text-indent: .5rem;
+        }
+
+
+        footer {
+            height: 2.2rem;
+            background-color: white;
+        }
+
+        footer ul {
+            display: flex;
+            height: 100%;
+            justify-content: space-around;
+        }
+
+        footer ul li {
+            height: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        footer li i {
+            height: 1.05rem;
+            line-height: 1.05rem;
+            font-size: .8rem;
+        }
+
+        footer li p {
+            height: .85rem;
+            line-height: .85rem;
+            font-size: .6rem;
+        }
+
+        footer li:nth-child(3) {
+            position: relative;
+        }
+
+        footer li:nth-child(3) i {
+            width: 2.5rem;
+            height: 2.5rem;
+            border: .05rem solid gray;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            margin-left: -1.25rem;
+            top: -0.4rem;
+            font-size: 1.5rem;
+            text-align: center;
+            line-height: 2.5rem;
+            background-color: white;
+        }
+        .iconfont{
+            font-size: .8rem;
+        }
+    </style>
+
+    <script>
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 320 * 20 + 'px'
+        // 你这个320, 注意嗷, 一开始写成640能不能看出来不对? 没看出来吧, 好好再想想怎么回事
+    </script>
+</head>
+
+<body>
+    <header>
+        <div>热点</div>
+        <div>关注</div>
+    </header>
+
+    <section>
+        <ul>
+            <li>足球生活</li>
+            <li>足球新闻</li>
+            <li>足球美女</li>
+        </ul>
+
+        <div class="list">
+            <div>
+                <img src="images/windmill.png" alt="">
+                <p>蛤蛤蛤</p>
+            </div>
+            <div>
+                <img src="images/windmill.png" alt="">
+                <p>蛤蛤蛤</p>
+            </div>
+            <div>
+                <img src="images/windmill.png" alt="">
+                <p>蛤蛤蛤</p>
+            </div>
+            <div>
+                <img src="images/windmill.png" alt="">
+                <p>蛤蛤蛤</p>
+            </div>
+            <div>
+                <img src="images/windmill.png" alt="">
+                <p>蛤蛤蛤</p>
+            </div>
+            <div>
+                <img src="images/windmill.png" alt="">
+                <p>蛤蛤蛤</p>
+            </div>
+            <div>
+                <img src="images/windmill.png" alt="">
+                <p>蛤蛤蛤</p>
+            </div>
+            <div>
+                <img src="images/windmill.png" alt="">
+                <p>蛤蛤蛤</p>
+            </div>
+            <div>
+                <img src="images/windmill.png" alt="">
+                <p>蛤蛤蛤</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <ul>
+            <li>
+                <i class="iconfont icon-me"></i>
+                <p>我的</p>
+            </li>
+            <li>
+                <i class="iconfont icon-me"></i>
+                <p>你的</p>
+            </li>
+            <li>
+                <i class="iconfont icon-picture"></i>
+            </li>
+            <li>
+                <i class="iconfont icon-me"></i>
+                <p>好的</p>
+            </li>
+            <li>
+                <i class="iconfont icon-me"></i>
+                <p>行的</p>
+            </li>
+        </ul>
+    </footer>
+</body>
+
+</html>
